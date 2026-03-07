@@ -48,3 +48,28 @@ Next milestone:
 Define architecture and publish initial system model.
 
 ---
+## Project Roadmap
+
+The AI-Native GTM Engine will evolve through several stages.
+
+**v0.1 — Framework definition**
+- Define the architecture model
+- Document the ownership thesis
+- Establish repository structure
+
+**v0.2 — Public framework site**
+- Publish system architecture
+- Launch gtmstack.ai knowledge hub
+
+**v0.3 — Audience CRM prototype**
+- Design lightweight CRM
+- Implement subscriber intake workflow
+
+**v0.4 — Automation layer**
+- Build initial orchestration workflows
+- Document automation patterns
+
+**v1.0 — AI-Native GTM Engine**
+- Fully documented architecture
+- Integrated workflows and CRM
+- Open lab of experiments
