@@ -27,6 +27,20 @@ Each layer represents a capability marketing must understand and partially own.
 
 ---
 
+## System Architecture
+
+The AI-Native GTM Engine is documented through a versioned architecture model.
+
+The first version of the system map can be found here:
+
+[AI-Native GTM Engine — System Map v0.1](docs/architecture/ai-native-gtm-engine-system-map-v0.1.jpg)
+
+Supporting documentation for this version is available here:
+
+[System Map v0.1 Notes](docs/architecture/system-map-v0.1-notes.md)
+
+The architecture will evolve as new workflows and experiments are introduced.
+
 ## Repository Structure
 
 This repository documents the evolution of the system.
