@@ -52,7 +52,7 @@ The Companies table stores organisations associated with people, vendors, sponso
 | Field | Type | Description |
 |------|------|-------------|
 | company_id | text / formula | Logical identifier for the company |
-| company_name | text | Canonical company name |
+| company_name_normalized | text | Canonical company name | 
 | website | url / text | Company website |
 | company_stage | single select | Company maturity stage |
 | industry | single select or text | Industry classification |
