@@ -45,7 +45,7 @@ The initial intake form will capture the following fields:
 - last_name
 - role
 - learning_interest
-- company_name_raw
+- company_name_normalized
 - signup_source
 - signup_timestamp
 
@@ -63,7 +63,7 @@ Optional fields:
 
 Future versions may extend this with:
 
-- - company_stage
+- company_stage
 - content_intent
 - visitor_profile_signals
 - captcha_protection
@@ -85,6 +85,19 @@ The workflow is successful if:
 - the record is stored in Airtable
 - the same subscriber is added to Beehiiv
 - the flow can be repeated reliably
+
+## v0.1 Workflow Nodes
+
+1. Webhook trigger
+2. Validate required fields
+3. Normalize company name
+4. Search People table
+5. Search Companies table
+6. Create or update Company
+7. Create or update Person
+8. Create Signal
+9. Send subscriber to Beehiiv
+10. Return success / log failure
 
 ## Related Playbook
 
