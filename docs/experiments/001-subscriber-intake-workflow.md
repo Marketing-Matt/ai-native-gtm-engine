@@ -36,24 +36,34 @@ It allows:
 5. n8n sends the subscriber to Beehiiv
 6. Workflow result is logged for future analysis
 
-## v0.1 Intake Schema
+## v0.1 Form Payload
 
-Version 0.1 is simple to begin with.
-
-Fields will include:
+The initial intake form will capture the following fields:
 
 - email
 - first_name
 - last_name
 - role
 - learning_interest
+- company_name_raw
 - signup_source
 - signup_timestamp
 
+Required fields:
+
+- email
+- first_name
+- role
+- learning_interest
+
+Optional fields:
+
+- last_name
+- company_name_raw
+
 Future versions may extend this with:
 
-- company
-- company_stage
+- - company_stage
 - content_intent
 - visitor_profile_signals
 - captcha_protection
