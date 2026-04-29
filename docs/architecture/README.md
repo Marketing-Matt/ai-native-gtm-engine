@@ -1,38 +1,68 @@
-# AI-Native GTM Engine Architecture
+# Architecture
 
-This folder contains the architectural models and diagrams that describe the AI-Native GTM Engine.
+This folder contains the system maps and supporting notes that describe
+the GTM Stack engine architecture.
 
-The architecture defines how data, intelligence, automation, and activation systems interact within a modern marketing environment.
+The architecture defines how data, intelligence, orchestration, and activation
+systems interact — and where marketing ownership sits within each layer.
 
-## System Map
+---
 
-The primary architecture diagram for the project is:
+## Current system map
 
-**AI-Native GTM Engine — System Map v0.1**
+**[gtmstack-system-map-v0.1.jpg](./gtmstack-system-map-v0.1.jpg)**
 
-This visual model illustrates the system flow across:
+The primary architecture diagram. Illustrates the five-layer engine:
 
-- Data
-- Intelligence
-- Orchestration
-- Activation
-- Feedback
+```
+Data → Intelligence → Orchestration → Activation → Feedback
+  ↑___________________________________________________|
+```
 
-It also includes a supporting infrastructure layer and highlights ownership and operational risks.
+Includes ownership labels, risk callouts, and the full infrastructure layer.
+
+**[gtmstack.ai-engine-system-map-v0.1-notes.md](./gtmstack.ai-engine-system-map-v0.1-notes.md)**
+
+Supporting notes for v0.1 — layer-by-layer breakdown, infrastructure
+status, open architectural decisions, and full version history.
+
+---
 
 ## Files
 
-ai-native-gtm-engine-system-map-v0.1.jpg  
-Primary visual architecture diagram.
+| File | Type | Version | Description |
+|---|---|---|---|
+| `gtmstack-system-map-v0.1.jpg` | Diagram | v0.1.3 | Primary system architecture |
+| `gtmstack.ai-engine-system-map-v0.1-notes.md` | Notes | v0.1.3 | Layer breakdown + ADRs |
 
-system-map-v0.1-notes.md  
-Supporting notes describing the intent and scope of version 0.1.
+---
 
 ## Versioning
 
-The architecture will evolve as experiments are conducted and new workflows are introduced.
+Diagrams are versioned as separate files so the evolution of the
+architecture is visible over time.
 
-Future versions will be added as:
+```
+gtmstack-system-map-v0.1.jpg   ← current
+gtmstack-system-map-v0.2.jpg   ← next milestone
+```
 
-- system-map-v0.2
-- system-map-v0.3
+Notes files follow the same convention and are overwritten in place —
+version history is tracked inside each file.
+
+---
+
+## Open architectural decisions
+
+See the notes file for the full ADR log. Current open decisions:
+
+| # | Decision | Priority |
+|---|---|---|
+| ADR-001 | Claude Cowork as workflow automation — scalability at v0.3+ | High |
+| ADR-002 | ElevenLabs → Content Pipelines integration approach | Medium |
+| ADR-004 | Feedback loop implementation approach | High |
+| ADR-005 | Airtable schema design for audience data model | High |
+
+---
+
+*>_ gtmstack.ai — Unfiltered AI marketing. Built live.*
