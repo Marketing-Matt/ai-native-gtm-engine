@@ -3,7 +3,7 @@
 **Current version:** v0.1.3
 **Last updated:** April 2026
 **Author:** Matt Browning
-**Diagram:** [GTMStack System Map v0.1](./gtmstack.ai-system-map-v0.1.jpg)
+**Diagram:** ![GTMStack System Map v0.1](docs/architecture/GTMStack.ai Engine — System Map v0.2.jpg)
 
 ---
 
