@@ -1,6 +1,6 @@
 # The AI Ownership Gap in Marketing
 
-This document outlines the central thesis behind the AI-Native GTM Engine.
+This document outlines the central thesis behind GTM Stack.ai.
 
 AI adoption in marketing is constrained less by tools and more by a lack of architectural ownership.
 
