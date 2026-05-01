@@ -5,7 +5,7 @@
 A learning-in-public skills platform for B2B marketing leaders.
 Every skill, every agent, every workflow is built live — using Claude — and documented here.
 
-No theory. No waiting for IT. Just my 20+ years of marketing experience codified.
+No theory. No waiting for IT. Just 20+ years of B2B marketing codified.
 
 ---
 
