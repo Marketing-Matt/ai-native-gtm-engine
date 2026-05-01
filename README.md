@@ -5,7 +5,8 @@
 A learning-in-public skills platform for B2B marketing leaders.
 Every skill, every agent, every workflow is built live — using Claude — and documented here.
 
-This is an unfiltered effort to codify my 20+ years experience in B2B Marketing.
+No theory. No waiting for IT. Just marketing that works.
+
 ---
 
 ## What this is
@@ -93,13 +94,13 @@ Data → Intelligence → Orchestration → Activation → Feedback
 | **Activation** | Website, newsletter, LinkedIn, operator playbooks | Marketing | — |
 | **Feedback** | Performance signals, experiments, iteration decisions | Marketing | No learning loop |
 
-**Infrastructure:** Framer · Beehiiv · ElevenLabs · Airtable · Claude · GitHub · Namecheap
+**Infrastructure:** Framer · Claude Design · Canva · Beehiiv · ElevenLabs · Airtable · Claude · GitHub · Namecheap
 
 Individual skills map to specific layers.
 Agents combine multiple skills into end-to-end workflows.
 
-**Current architecture:** [System Map v0.1](./engine/architecture/gtmstack-system-map-v0.1.jpg)
-**Architecture notes:** [v0.1 notes](./engine/architecture/gtmstack-system-map-v0.1-notes.md)
+**Current architecture:** [System Map v0.2](./engine/architecture/gtmstack-system-map-v0.2.jpeg)
+**Architecture notes:** [v0.2 notes](./engine/architecture/gtmstack.ai-engine-system-map-v0.1-notes.md)
 
 ---
 
@@ -205,9 +206,11 @@ Full tracker: [content/build-log/tracker.md](./content/build-log/tracker.md)
 
 | Tool | Role |
 |---|---|
-| [Claude](https://claude.ai) | Primary AI — skills are built and documented using Claude |
+| [Claude](https://claude.ai) | Primary AI — skills built and documented using Claude |
+| [Claude Design](https://claude.ai) | Visual design system, prototypes, diagrams, and design outputs |
 | [GitHub](https://github.com) | Source of truth for all content, code and brand |
 | [Framer](https://framer.com) | gtmstack.ai website |
+| [Canva](https://canva.com) | Social assets and newsletter publishing — fed by Claude Design |
 | [Beehiiv](https://beehiiv.com) | Newsletter and audience capture |
 | [ElevenLabs](https://elevenlabs.io) | Voice and audio content generation |
 | [Airtable](https://airtable.com) | CRM and audience data |
