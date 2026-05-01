@@ -5,7 +5,7 @@
 A learning-in-public skills platform for B2B marketing leaders.
 Every skill, every agent, every workflow is built live — using Claude — and documented here.
 
-No theory. No waiting for IT. Just me codifying 20+ years in B2B Marketing.
+No theory. No waiting for IT. Just my 20+ years of marketing experience codified.
 
 ---
 
@@ -99,8 +99,8 @@ Data → Intelligence → Orchestration → Activation → Feedback
 Individual skills map to specific layers.
 Agents combine multiple skills into end-to-end workflows.
 
-**Current architecture:** [System Map v0.2](./engine/architecture/gtmstack-system-map-v0.2.jpeg)
-**Architecture notes:** [v0.2 notes](./engine/architecture/gtmstack.ai-engine-system-map-v0.1-notes.md)
+**Current architecture:** [System Map v0.4](./engine/architecture/gtmstack-system-map-v0.4.png)
+**Architecture notes:** [v0.2 notes](./engine/architecture/gtmstack.ai-engine-system-map-v0.2-notes.md)
 
 ---
 
