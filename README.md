@@ -5,8 +5,7 @@
 A learning-in-public skills platform for B2B marketing leaders.
 Every skill, every agent, every workflow is built live — using Claude — and documented here.
 
-No theory. No waiting for IT. Just marketing that works.
-
+This is an unfiltered effort to automate marketing use cases using my 20+ years experience in B2B Marketing.
 ---
 
 ## What this is
