@@ -1,9 +1,10 @@
 # System Map — Architecture Notes
 
-**Current version:** v0.1.3
-**Last updated:** April 2026
+**Current version:** v0.2
+**Diagram versions covered:** v0.1 through v0.4
+**Last updated:** May 2026
 **Author:** Matt Browning
-**Diagram:** [GTMStack System Map v0.1](https://github.com/Marketing-Matt/ai-native-gtm-engine/blob/main/docs/architecture/GTMStack.ai%20Engine%20%E2%80%94%20System%20Map%20v0.2.jpg)
+**Diagram:** [GTMStack.ai Engine — System Map v0.4](./GTMStack.ai-Engine-System-Map-v0.4.png)
 
 ---
 
@@ -137,11 +138,13 @@ Address the learning loop risk at v0.4 as part of the data layer build.
 | Tool | Role | Status | Notes |
 |---|---|---|---|
 | Framer | Website + Skills Marketplace | ✅ Active | |
+| Claude Design | Design system, prototypes, diagrams, all visual outputs | ✅ Active | Reads tokens.json + GitHub codebase — brand applied automatically |
+| Canva | Social assets + newsletter publishing | ✅ Active | Downstream of Claude Design — receives exports for distribution |
 | Beehiiv | Newsletter + audience capture | ✅ Active | |
 | ElevenLabs | Voice + audio content | ✅ Active | Needs connecting to Content Pipelines |
 | Airtable | CRM + audience data | 🟡 v0 | Schema redesign needed |
 | Claude | Primary LLM | ✅ Active | Claude-only confirmed |
-| GitHub | Source of truth | ✅ Active | |
+| GitHub | Source of truth | ✅ Active | Canonical asset store for all PNG/PDF outputs |
 | Namecheap | DNS | ✅ Active | |
 
 ---
@@ -155,6 +158,41 @@ Address the learning loop risk at v0.4 as part of the data layer build.
 | ADR-003 | Fix infrastructure label: OpenAI / Claude → Claude | ✅ Resolved | — |
 | ADR-004 | Feedback loop implementation approach | 🔴 Open | High (v0.4) |
 | ADR-005 | Airtable schema design — data model for audiences | 🔴 Open | High (v0.3) |
+| ADR-006 | Data governance tooling selection — budget available | 🔴 Open | High (v0.3) |
+| ADR-007 | Miro removed — Figma adopted temporarily, now also removed | ✅ Resolved | — |
+| ADR-008 | Claude Design adopted as primary design tool — Figma deferred to future scale | ✅ Resolved | Revisit Figma at v1.0 |
+
+---
+
+## Design output pipeline
+
+```
+brand/tokens.json + GitHub codebase
+        ↓
+Claude Design (reads both on setup — brand applied automatically)
+        ↓
+Visual outputs: diagrams, prototypes, wireframes, one-pagers
+        ↓ export
+Canva → social publishing + newsletter assets (distribution only)
+GitHub → canonical PNG/PDF asset store
+Framer → site build (via Claude Code or direct export)
+```
+
+Miro removed entirely. Figma deferred to v1.0+ when building at scale.
+
+---
+
+## Version history
+
+| Version | Date | Changes |
+|---|---|---|
+| v0.1 | April 2026 | Initial system map published |
+| v0.1.1 | April 2026 | ElevenLabs added; n8n flagged for removal |
+| v0.1.2 | April 2026 | Skills/Agents added to Intelligence; Claude-only confirmed; Claude Cowork added; Open Lab → Skills Marketplace |
+| v0.1.3 | April 2026 | Infrastructure label: OpenAI/Claude → Claude. ADR-003 closed. |
+| v0.2 | April 2026 | Promoted to v0.2. All v0.1.x changes consolidated. |
+| v0.3 | May 2026 | Three operating layers added: Growth Strategy, Automation, Data Governance. Miro removed. ADR-006 opened. |
+| v0.4 | May 2026 | Claude Design adopted as primary design tool. Figma removed and deferred. Canva repositioned as distribution-only. ADR-007/008 resolved. |
 
 ---
 
@@ -165,7 +203,9 @@ Address the learning loop risk at v0.4 as part of the data layer build.
 | v0.1 | April 2026 | Initial system map published |
 | v0.1.1 | April 2026 | ElevenLabs added to infrastructure; n8n flagged for removal |
 | v0.1.2 | April 2026 | Skills/Agents added to Intelligence layer; LLM Processing confirmed Claude-only; Claude Cowork added to Orchestration; Open Lab renamed to Skills Marketplace in Activation |
-| v0.1.3 | April 2026 | Infrastructure label updated: OpenAI / Claude → Claude. Diagram now fully consistent. ADR-003 closed. |
+| v0.1.3 | April 2026 | Infrastructure label updated: OpenAI / Claude → Claude. Diagram fully consistent. ADR-003 closed. |
+| v0.2 | April 2026 | Promoted to v0.2. Diagram filename updated. All v0.1.x changes consolidated. |
+| v0.3 | May 2026 | Three operating layers added: Growth Strategy, Automation, Data Governance. Miro removed, Figma adopted (ADR-007). ADR-006 opened for data governance tooling. Design pipeline formalised. |
 
 ---
 
