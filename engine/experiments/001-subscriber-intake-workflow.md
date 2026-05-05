@@ -14,7 +14,7 @@ If subscriber intake begins at the website layer rather than the newsletter plat
 
 Initial system flow:
 
-Framer form → n8n → Airtable → Beehiiv
+Next.js (Beehiiv embed) → Beehiiv → n8n (sync) → Airtable
 
 ## Why This Flow
 
@@ -29,12 +29,17 @@ It allows:
 
 ## Initial Workflow Steps
 
-1. Visitor submits a form on gtmstack.ai
-2. Form data is sent into n8n
-3. n8n validates and structures the record
-4. n8n creates or updates the subscriber in Airtable
-5. n8n sends the subscriber to Beehiiv
+1. Visitor submits the Beehiiv subscribe-form embed on gtmstack.ai
+2. Beehiiv creates the subscriber record (source of truth for newsletter)
+3. n8n is triggered by a Beehiiv webhook (or polls Beehiiv on a schedule)
+4. n8n validates, normalises, and enriches the subscriber payload
+5. n8n upserts the subscriber into Airtable as the CRM record
 6. Workflow result is logged for future analysis
+
+> **Note:** v0.1 originally had a custom website form posting to n8n first, then
+> fanning out to Airtable + Beehiiv. With the move to Next.js + Vercel and the
+> native Beehiiv embed, Beehiiv now owns the capture step. n8n becomes a sync
+> layer that mirrors Beehiiv → Airtable rather than the entry point.
 
 ## v0.1 Form Payload
 
@@ -72,10 +77,10 @@ Future versions may extend this with:
 
 ## Risks
 
-- form integration complexity in Framer
 - duplicate record handling
 - partial workflow failure between Airtable and Beehiiv
 - too many input fields reducing conversion
+- Beehiiv embed styling drift vs the rest of the Next.js site
 
 ## Success Criteria
 
