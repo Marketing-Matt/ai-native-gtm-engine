@@ -30,7 +30,7 @@ The `>_` is the core brand mark. It references the terminal command prompt — t
 - Always rendered in Electric Lime `#A6FF00`
 - Never recoloured, outlined, or modified
 - The cursor (`_`) is the underscore character — not a dash, not a rectangle
-- In digital contexts the cursor blinks — this is intentional and should be preserved where possible
+- **In digital surfaces the underscore blinks continuously.** This is mandatory, not optional. See [The feedback cursor](#the-feedback-cursor) for full spec.
 
 ### The wordmark
 ```
@@ -181,7 +181,38 @@ The underscore prefix is the terminal filename convention. Every nav item is a f
 - Shared Ownership: blue on dark blue — the only context where blue appears
 
 ### The feedback cursor
-The blinking `_` cursor appears throughout the brand on the `>_` mark. It signals that the system is live, running, waiting for input. Preserve it in digital contexts.
+
+The underscore (`_`) in the `>_` prompt mark blinks continuously in all digital surfaces. The cursor is the visual heartbeat of the brand — it signals that the system is live, running, waiting for input.
+
+**Cadence:** 1-second cycle. 500ms visible, 500ms invisible. **Steps animation** — a hard on/off snap, never a smooth fade. This matches a real terminal cursor; CRT-style fade looks cheap.
+
+**Where it applies:**
+- Primary brand mark in navigation
+- Footer sign-off mark
+- Any standalone `>_` brand mark on a dark surface
+
+**Where it does not apply:**
+- The favicon (animated favicons are distracting and most platforms don't render them anyway)
+- `>_` used as a prefix on CTA buttons (would compete with hover/focus states)
+- Live terminal output sequences with their own typewriter animation
+
+**CSS reference implementation:**
+```css
+@keyframes gtm-cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.gtm-cursor {
+  animation: gtm-cursor-blink 1s steps(1) infinite;
+}
+```
+
+Markup pattern — wrap only the underscore character in the cursor span:
+```html
+<span class="brand-mark">&gt;<span class="gtm-cursor">_</span></span>
+```
+
+The cursor never stops. No hover pause, no scroll trigger. A 1Hz blink is well below WCAG flash thresholds (≥3Hz) and is universally accessible — no `prefers-reduced-motion` exception is required, though implementations may freeze the cursor in the visible state if they choose to be conservative.
 
 ---
 

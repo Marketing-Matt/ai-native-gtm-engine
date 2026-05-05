@@ -227,7 +227,9 @@ export default function HoldingPage() {
           {/* NAV */}
           <nav style={{ padding: isMobile ? "16px 20px" : "20px 48px" }}>
             <a href="#" className="nav-logo">
-              <span className="nav-mark">&gt;_</span>
+              <span className="nav-mark">
+                &gt;<span className="gtm-cursor">_</span>
+              </span>
               <div className="nav-pipe"></div>
               <div className="nav-wordmark">
                 <span className="g">gtm</span>
@@ -561,7 +563,9 @@ export default function HoldingPage() {
               }}
             >
               <div className="footer-brand">
-                <span className="mark">&gt;_</span>
+                <span className="mark">
+                  &gt;<span className="gtm-cursor">_</span>
+                </span>
                 Matt Browning · gtmstack.ai · 2026
               </div>
               <div className="footer-links">
@@ -691,6 +695,16 @@ const CSS = `
   color: #A6FF00;
   letter-spacing: 1px;
   font-family: var(--mono);
+}
+
+/* Brand cursor — the underscore in the >_ prompt mark blinks continuously.
+   1Hz steps animation, never fades. See brand/style-guide.md. */
+@keyframes gtm-cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.gtm-root .gtm-cursor {
+  animation: gtm-cursor-blink 1s steps(1) infinite;
 }
 .gtm-root .nav-pipe { width:1px; height:20px; background:var(--grey); }
 .gtm-root .nav-wordmark {
