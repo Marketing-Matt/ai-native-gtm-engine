@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Claude Code
+.claude/
+
+# Node / Next.js (for site/ subproject)
+node_modules/
+.next/
+out/
+.vercel/
+*.log
+.env*.local
+
+# Build artifacts
+dist/
+build/
