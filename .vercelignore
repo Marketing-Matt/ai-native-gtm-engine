@@ -1,0 +1,13 @@
+# Vercel only needs the site/ subproject; ignore everything else
+/agents
+/brand
+/commercial
+/content
+/data
+/engine
+/skills
+/.claude
+/holding-page.tsx
+/README.md
+*.md
+.DS_Store

@@ -95,12 +95,12 @@ open architectural decision.
 
 | Component | Tool | Notes |
 |---|---|---|
-| gtmstack.ai Website | Framer | Primary public surface |
-| Skills Marketplace | Framer | The browsable library of skill cards |
+| gtmstack.ai Website | Next.js (Vercel) | Primary public surface — code in [`site/`](../../site/), auto-deploys on `git push` |
+| Skills Marketplace | Next.js (Vercel) | The browsable library of skill cards — same site/ codebase |
 | Newsletter | Beehiiv | |
 | LinkedIn Distribution | — | |
 | Operator Playbooks | Marketing-owned | Agent-level, end-to-end workflows |
-| Audience Capture | Beehiiv + Framer | |
+| Audience Capture | Beehiiv | Subscribe-form embed in the Next.js site |
 
 **Notes:**
 The Skills Marketplace is the core product as it appears on the public site —
@@ -137,7 +137,8 @@ Address the learning loop risk at v0.4 as part of the data layer build.
 
 | Tool | Role | Status | Notes |
 |---|---|---|---|
-| Framer | Website + Skills Marketplace | ✅ Active | |
+| Next.js + Vercel | Website + Skills Marketplace | ✅ Active | Code-deployed via `site/` subproject; auto-deploys on `git push` to `main`. Branch previews enabled |
+| Claude Code | Site authoring + edits | ✅ Active | Site code edited in Claude Code; commits flow direct to GitHub → Vercel |
 | Claude Design | Design system, prototypes, diagrams, all visual outputs | ✅ Active | Reads tokens.json + GitHub codebase — brand applied automatically |
 | Canva | Social assets + newsletter publishing | ✅ Active | Downstream of Claude Design — receives exports for distribution |
 | Beehiiv | Newsletter + audience capture | ✅ Active | |
@@ -175,7 +176,7 @@ Visual outputs: diagrams, prototypes, wireframes, one-pagers
         ↓ export
 Canva → social publishing + newsletter assets (distribution only)
 GitHub → canonical PNG/PDF asset store
-Framer → site build (via Claude Code or direct export)
+Next.js (site/) → Vercel auto-deploy on git push to main → gtmstack.ai
 ```
 
 Miro removed entirely. Figma deferred to v1.0+ when building at scale.
@@ -193,6 +194,7 @@ Miro removed entirely. Figma deferred to v1.0+ when building at scale.
 | v0.2 | April 2026 | Promoted to v0.2. All v0.1.x changes consolidated. |
 | v0.3 | May 2026 | Three operating layers added: Growth Strategy, Automation, Data Governance. Miro removed. ADR-006 opened. |
 | v0.4 | May 2026 | Claude Design adopted as primary design tool. Figma removed and deferred. Canva repositioned as distribution-only. ADR-007/008 resolved. |
+| v0.5 | May 2026 | Framer removed. Site rebuilt as Next.js + Vercel under [`site/`](../../site/). git push → auto-deploy. Branch previews enabled. Subscribe pipeline simplified to Beehiiv embed (no n8n bridge). |
 
 ---
 

@@ -45,8 +45,8 @@ Subscriber growth signals captured as part of the system feedback loop.
 
 Tools used in version 0.1:
 
-- Framer (website)
-- Beehiiv (newsletter platform)
+- Next.js + Vercel (website — see [`site/`](../../site/))
+- Beehiiv (newsletter platform + subscribe-form embed)
 - n8n Cloud (automation)
 - Airtable (audience data store)
 

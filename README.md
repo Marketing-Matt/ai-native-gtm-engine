@@ -94,7 +94,7 @@ Data → Intelligence → Orchestration → Activation → Feedback
 | **Activation** | Website, newsletter, LinkedIn, operator playbooks | Marketing | — |
 | **Feedback** | Performance signals, experiments, iteration decisions | Marketing | No learning loop |
 
-**Infrastructure:** Framer · Claude Design · Canva · Beehiiv · ElevenLabs · Airtable · Claude · GitHub · Namecheap
+**Infrastructure:** Next.js + Vercel · Claude Design · Canva · Beehiiv · ElevenLabs · Airtable · Claude · GitHub · Namecheap
 
 Individual skills map to specific layers.
 Agents combine multiple skills into end-to-end workflows.
@@ -109,6 +109,12 @@ Agents combine multiple skills into end-to-end workflows.
 ```
 gtmstack/
 ├── README.md                      ← you are here
+│
+├── site/                          ← gtmstack.ai (Next.js + Vercel)
+│   ├── app/                       ← App Router pages, layout, globals
+│   ├── components/                ← React components (holding-page, etc.)
+│   ├── public/                    ← static assets (favicon, og images)
+│   └── README.md                  ← site-specific deploy notes
 │
 ├── brand/                         ← visual identity & voice
 │   ├── style-guide.md
@@ -207,9 +213,11 @@ Full tracker: [content/build-log/tracker.md](./content/build-log/tracker.md)
 | Tool | Role |
 |---|---|
 | [Claude](https://claude.ai) | Primary AI — skills built and documented using Claude |
+| [Claude Code](https://claude.com/claude-code) | Site code authored and edited via Claude Code |
 | [Claude Design](https://claude.ai) | Visual design system, prototypes, diagrams, and design outputs |
 | [GitHub](https://github.com) | Source of truth for all content, code and brand |
-| [Framer](https://framer.com) | gtmstack.ai website |
+| [Next.js](https://nextjs.org) | gtmstack.ai website framework — see [`site/`](./site/) |
+| [Vercel](https://vercel.com) | Site hosting + CI/CD (auto-deploy on `git push`) |
 | [Canva](https://canva.com) | Social assets and newsletter publishing — fed by Claude Design |
 | [Beehiiv](https://beehiiv.com) | Newsletter and audience capture |
 | [ElevenLabs](https://elevenlabs.io) | Voice and audio content generation |

@@ -10,7 +10,11 @@ systems interact — and where marketing ownership sits within each layer.
 
 ## Current system map
 
-**[gtmstack-system-map-v0.1.jpg](./gtmstack-system-map-v0.1.jpg)**
+**[gtmstack-system-map-v0.4.png](./gtmstack-system-map-v0.4.png)** — current rendered diagram.
+
+> ⚠️ The v0.4 PNG still labels the Activation layer as **Framer**. The v0.5
+> notes (below) supersede this — the website is now Next.js + Vercel. A v0.5
+> diagram regeneration is open work for Claude Design.
 
 The primary architecture diagram. Illustrates the five-layer engine:
 
@@ -21,10 +25,11 @@ Data → Intelligence → Orchestration → Activation → Feedback
 
 Includes ownership labels, risk callouts, and the full infrastructure layer.
 
-**[gtmstack.ai-engine-system-map-v0.1-notes.md](./gtmstack.ai-engine-system-map-v0.1-notes.md)**
+**[gtmstack.ai-engine-system-map-v0.2-notes.md](./gtmstack.ai-engine-system-map-v0.2-notes.md)**
 
-Supporting notes for v0.1 — layer-by-layer breakdown, infrastructure
-status, open architectural decisions, and full version history.
+Supporting notes — layer-by-layer breakdown, infrastructure status, open
+architectural decisions, and full version history (currently up to v0.5
+in the notes; diagram still at v0.4 pending regeneration).
 
 ---
 
@@ -32,8 +37,8 @@ status, open architectural decisions, and full version history.
 
 | File | Type | Version | Description |
 |---|---|---|---|
-| `gtmstack-system-map-v0.1.jpg` | Diagram | v0.1.3 | Primary system architecture |
-| `gtmstack.ai-engine-system-map-v0.1-notes.md` | Notes | v0.1.3 | Layer breakdown + ADRs |
+| `gtmstack-system-map-v0.4.png` | Diagram | v0.4 | Rendered system map (Framer reference is stale) |
+| `gtmstack.ai-engine-system-map-v0.2-notes.md` | Notes | v0.5 | Layer breakdown + ADRs + migration history |
 
 ---
 
@@ -43,8 +48,8 @@ Diagrams are versioned as separate files so the evolution of the
 architecture is visible over time.
 
 ```
-gtmstack-system-map-v0.1.jpg   ← current
-gtmstack-system-map-v0.2.jpg   ← next milestone
+gtmstack-system-map-v0.4.png  ← current rendered diagram
+gtmstack-system-map-v0.5.png  ← TODO: regenerate to reflect Next.js + Vercel
 ```
 
 Notes files follow the same convention and are overwritten in place —
@@ -62,6 +67,7 @@ See the notes file for the full ADR log. Current open decisions:
 | ADR-002 | ElevenLabs → Content Pipelines integration approach | Medium |
 | ADR-004 | Feedback loop implementation approach | High |
 | ADR-005 | Airtable schema design for audience data model | High |
+| ADR-009 | Regenerate system-map diagram to v0.5 reflecting Next.js + Vercel | Medium |
 
 ---
 
