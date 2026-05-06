@@ -9,11 +9,11 @@
 
 ```
 last_updated:     2026-05-06
-last_commit:      update CLAUDE.md — final rules: issue tracking, experiment states, Claude Skills sync, update CONTEXT.md
+last_commit:      reconcile CONTEXT.md with actual repo state
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
-skills_committed: 0 marketing skills (template + 1 meta-skill: content/write-build-log.md v1.0)
+skills_committed: 0 marketing skills (template + 1 meta-skill committed)
 ```
 
 -----
@@ -29,7 +29,7 @@ skills_committed: 0 marketing skills (template + 1 meta-skill: content/write-bui
 - Skill template committed: `skills/_template.md`
 - Build log tracker committed: `content/build-log/tracker.md`
 - Skills manifest: `skills/manifest.json` (committed — empty index, v1.0.0)
-- First meta-skill committed: `content/write-build-log.md` v1.0 (pending first end-to-end run on Build Log 001)
+- First meta-skill committed: `content/write-build-log.md` v1.0
 
 -----
 
@@ -117,10 +117,10 @@ Work through these in order. Do not skip ahead.
 
 ## Immediate fixes (not backlog — action in next session)
 
-- [ ] Beehiiv: turn off “Approval required” (Settings → Publication → Subscription)
+- [x] Beehiiv: turn off “Approval required” — DONE
 - [ ] Site page title: change to “gtmstack.ai — Unfiltered AI marketing. Built live.”
 - [ ] Meta description: update from Beehiiv CDN default to brand voice
-- [x] commercial/: in .gitignore + tracked files removed from public index (ede1732)
+- [x] commercial/: confirmed in .gitignore + files removed from public index (ede1732)
 - [ ] Skill numbering convention: establish before library grows (recommendation: DG-001, PMM-001 function prefix)
 
 -----
@@ -196,9 +196,9 @@ See `skills/manifest.json` for full index.
 
 ## Next actions for Claude Code
 
-- Begin Backlog #3: build `content/extract-linkedin-posts.md` (second meta-skill, dependency #2 ✅ met)
-- Run Build Log 001 end-to-end through `content/write-build-log.md` to validate the skill, then add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
-- Decide whether to purge `commercial/model.md` and `commercial/positioning.md` from git history before merging branch to main (current state: untracked but still in pre-`ede1732` history)
+- Begin Backlog #3: `content/extract-linkedin-posts.md` (dependency #2 ✅ met — ready to start)
+- After first end-to-end run of `write-build-log.md` on Build Log 001: add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
+- Fix site page title and meta description (immediate fixes still open)
 
 -----
 
