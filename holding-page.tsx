@@ -184,6 +184,25 @@ export default function HoldingPage() {
         }
     }, [])
 
+    // Inject page title and meta description
+    useEffect(() => {
+        if (typeof window === "undefined" || typeof document === "undefined") return
+
+        const prevTitle = document.title
+        document.title = "gtmstack.ai — Unfiltered AI marketing. Built live."
+
+        const meta = document.createElement("meta")
+        meta.name = "description"
+        meta.content =
+        "A learning-in-public skills platform for B2B marketing leaders. Every skill, every agent, every workflow built live using Claude."
+    document.head.appendChild(meta)
+
+        return () => {
+        document.title = prevTitle
+        if (meta.parentNode) meta.parentNode.removeChild(meta)
+    }
+}, [])
+    
     // Inject Google Fonts
     useEffect(() => {
         if (typeof window === "undefined" || typeof document === "undefined") return
