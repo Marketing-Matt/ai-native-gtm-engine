@@ -54,6 +54,10 @@ Claude Code → git push origin main → GitHub → Vercel auto-deploy → gtmst
 Any push to `main` deploys to production. Pushes to other branches get preview URLs.
 **No build/test step before push** — Vercel runs `next build` on its own. If the build fails, Vercel tells you in the dashboard. Rollback is a one-click revert in Vercel.
 
+Minor status updates (checkbox ticks, one-line fixes): 
+edit GitHub directly.
+Backlog state changes and multi-file updates: Claude Code.
+
 ---
 
 ## Public-repo discipline (important)
