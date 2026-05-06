@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-06
-last_commit:      reconcile CONTEXT.md with actual repo state
+last_commit:      update CONTEXT.md — backlog #3 in progress (CON-002 content/extract-linkedin-posts.md)
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
@@ -104,7 +104,7 @@ Work through these in order. Do not skip ahead.
 |--|---------------------------------------------------------------------------------|--------------------------|------|
 |1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |✅ Done|
 |2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |✅ Done|
-|3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |⬜ Open|
+|3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |🔄 In progress|
 |4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|⬜ Open|
 |5 |Build meta-skill: content/publish-skill-to-site.md                               |write-beehiiv committed   |⬜ Open|
 |6 |Resolve GitHub → Vercel publish pipeline (GitHub Action or document manual steps)|publish-skill skill built |⬜ Open|
