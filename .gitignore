@@ -15,3 +15,6 @@ out/
 # Build artifacts
 dist/
 build/
+
+# Commercial / monetisation thinking — kept out of the public index
+commercial/
