@@ -116,11 +116,13 @@ Work through these in order. Do not skip ahead.
 ## Immediate fixes (not backlog — action in next session)
 
 - [x] Beehiiv: turn off “Approval required” (Settings → Publication → Subscription)
-- [ ] Site page title: change to “gtmstack.ai — Unfiltered AI marketing. Built live.”
-- [ ] Meta description: update from Beehiiv CDN default to brand voice
-- [ ] commercial/: confirm in .gitignore — must not be publicly indexed
-- [ ] Skill numbering convention: establish before library grows (recommendation: DG-001, PMM-001 function prefix)
-
+- [x] Meta description: update from Beehiiv CDN default to brand voice
+- [x] commercial/: removed from public index (ede1732) + confirmed in .gitignore
+- [x] Skill numbering convention: establish before library grows
+      Format: [3-letter function prefix]-[3-digit number] e.g. DGN-001, PMM-001
+      Prefixes: DGN (Demand Gen) · PMM (Product Marketing) · CON (Content) · 
+      REV (Revenue Ops) · ABM (ABM) · BRD (Brand) · DGT (Digital Marketing) · 
+      OPS (Marketing Ops) · FMM (Field Marketing) · CMO (CMO) · SDR (SDR)
 -----
 
 ## Meta-skills to build (content engine layer)
