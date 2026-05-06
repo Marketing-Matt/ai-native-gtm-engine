@@ -115,7 +115,7 @@ Work through these in order. Do not skip ahead.
 
 ## Immediate fixes (not backlog — action in next session)
 
-- [ ] Beehiiv: turn off “Approval required” (Settings → Publication → Subscription)
+- [x] Beehiiv: turn off “Approval required” (Settings → Publication → Subscription)
 - [ ] Site page title: change to “gtmstack.ai — Unfiltered AI marketing. Built live.”
 - [ ] Meta description: update from Beehiiv CDN default to brand voice
 - [ ] commercial/: confirm in .gitignore — must not be publicly indexed
