@@ -9,11 +9,11 @@
 
 ```
 last_updated:     2026-05-06
-last_commit:      update CONTEXT.md — backlog #3 in progress (CON-002 content/extract-linkedin-posts.md)
+last_commit:      add content/extract-linkedin-posts.md — CON-002 second meta-skill (v1.0)
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
-skills_committed: 0 marketing skills (template + 1 meta-skill committed)
+skills_committed: 0 marketing skills (template + 2 meta-skills committed: CON-001, CON-002)
 ```
 
 -----
@@ -29,7 +29,8 @@ skills_committed: 0 marketing skills (template + 1 meta-skill committed)
 - Skill template committed: `skills/_template.md`
 - Build log tracker committed: `content/build-log/tracker.md`
 - Skills manifest: `skills/manifest.json` (committed — empty index, v1.0.0)
-- First meta-skill committed: `content/write-build-log.md` v1.0
+- First meta-skill committed: `content/write-build-log.md` v1.0 (CON-001)
+- Second meta-skill committed: `content/extract-linkedin-posts.md` v1.0 (CON-002)
 
 -----
 
@@ -53,8 +54,9 @@ gtmstack/
 │   ├── build-log/
 │   │   ├── tracker.md
 │   │   └── 000-planning-session-may-2026.md
-│   ├── write-build-log.md  ← first meta-skill (v1.0)
-│   └── lead-magnets/      ← create when first lead magnet is ready
+│   ├── write-build-log.md       ← CON-001 — first meta-skill (v1.0)
+│   ├── extract-linkedin-posts.md ← CON-002 — second meta-skill (v1.0)
+│   └── lead-magnets/            ← create when first lead magnet is ready
 ├── data/
 ├── engine/
 │   └── architecture/
@@ -104,7 +106,7 @@ Work through these in order. Do not skip ahead.
 |--|---------------------------------------------------------------------------------|--------------------------|------|
 |1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |✅ Done|
 |2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |✅ Done|
-|3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |🔄 In progress|
+|3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |✅ Done|
 |4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|⬜ Open|
 |5 |Build meta-skill: content/publish-skill-to-site.md                               |write-beehiiv committed   |⬜ Open|
 |6 |Resolve GitHub → Vercel publish pipeline (GitHub Action or document manual steps)|publish-skill skill built |⬜ Open|
@@ -121,7 +123,7 @@ Work through these in order. Do not skip ahead.
 - [ ] Site page title: change to “gtmstack.ai — Unfiltered AI marketing. Built live.”
 - [ ] Meta description: update from Beehiiv CDN default to brand voice
 - [x] commercial/: confirmed in .gitignore + files removed from public index (ede1732)
-- [ ] Skill numbering convention: establish before library grows (recommendation: DG-001, PMM-001 function prefix)
+- [x] Skill numbering convention: function prefix established — CON-NNN (content engine meta-skills) live; DG-NNN, PMM-NNN, ABM-NNN, etc. to follow as marketing skills land
 
 -----
 
@@ -129,17 +131,17 @@ Work through these in order. Do not skip ahead.
 
 These power the content workflow. Build before any marketing skills.
 
-|Skill                               |Purpose                                         |Priority  |
-|------------------------------------|------------------------------------------------|----------|
-|content/write-build-log.md          |Structured build log from session notes         |P1 — ✅ committed v1.0|
-|content/extract-linkedin-posts.md   |3–5 LinkedIn posts from any build log           |P1        |
-|content/write-beehiiv-issue.md      |Newsletter draft from skill card + build log    |P1        |
-|content/publish-skill-to-site.md    |GitHub commit → Vercel → live skill card        |P1        |
-|content/codify-insight-to-skill.md  |Insight → new skill card draft                  |P2        |
-|content/narrate-skill-elevenlabs.md |ElevenLabs script from skill card               |P2        |
-|content/write-reddit-post.md        |Community post from build                       |P3        |
-|content/generate-lead-magnet.md     |PDF/resource from skill cluster                 |P3        |
-|content/write-claude-journal-post.md|Thought leadership from build log pains/insights|P2        |
+|ID    |Skill                               |Purpose                                         |Status               |
+|------|------------------------------------|------------------------------------------------|---------------------|
+|CON-001|content/write-build-log.md          |Structured build log from session notes         |P1 — ✅ committed v1.0|
+|CON-002|content/extract-linkedin-posts.md   |3–5 LinkedIn posts from any build log           |P1 — ✅ committed v1.0|
+|CON-003|content/write-beehiiv-issue.md      |Newsletter draft from skill card + build log    |P1 — ⬜ Open          |
+|CON-004|content/publish-skill-to-site.md    |GitHub commit → Vercel → live skill card        |P1 — ⬜ Open          |
+|CON-005|content/codify-insight-to-skill.md  |Insight → new skill card draft                  |P2 — ⬜ Open          |
+|CON-006|content/narrate-skill-elevenlabs.md |ElevenLabs script from skill card               |P2 — ⬜ Open          |
+|CON-007|content/write-reddit-post.md        |Community post from build                       |P3 — ⬜ Open          |
+|CON-008|content/generate-lead-magnet.md     |PDF/resource from skill cluster                 |P3 — ⬜ Open          |
+|CON-009|content/write-claude-journal-post.md|Thought leadership from build log pains/insights|P2 — ⬜ Open          |
 
 -----
 
@@ -196,8 +198,9 @@ See `skills/manifest.json` for full index.
 
 ## Next actions for Claude Code
 
-- Begin Backlog #3: `content/extract-linkedin-posts.md` (dependency #2 ✅ met — ready to start)
+- Begin Backlog #4: `content/write-beehiiv-issue.md` (CON-003 — dependency #3 ✅ met)
 - After first end-to-end run of `write-build-log.md` on Build Log 001: add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
+- After first end-to-end run of `extract-linkedin-posts.md`: add `⚡ Ready to sync to Claude Settings — content/extract-linkedin-posts.md`
 - Fix site page title and meta description (immediate fixes still open)
 
 -----

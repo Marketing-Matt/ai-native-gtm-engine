@@ -7,6 +7,7 @@
 
 | Field | Value |
 |---|---|
+| **Skill ID** | CON-001 |
 | **Category** | Content engine — meta-skill |
 | **Role** | Anyone running a gtmstack build session (currently: Matt) |
 | **Difficulty** | ⭐⭐ 2 |
