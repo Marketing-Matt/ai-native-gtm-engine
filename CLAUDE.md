@@ -26,7 +26,7 @@ Full pitch: see [`README.md`](./README.md). Brand: [`brand/style-guide.md`](./br
 | [`engine/`](./engine/) | GTM engine architecture, strategy, workflows, experiments, ADRs. |
 | [`content/`](./content/) | Frameworks, build log, about. |
 | [`data/`](./data/) | Audience data model + signal definitions. |
-| [`commercial/`](./commercial/) | Positioning + monetisation thinking. |
+| `commercial/` | Positioning + monetisation thinking. **Gitignored** — local only, not in the public repo. |
 
 ---
 
