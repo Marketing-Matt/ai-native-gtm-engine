@@ -119,4 +119,157 @@ When in doubt, the token file ([`brand/tokens.json`](./brand/tokens.json)) wins.
 
 ---
 
+## `CONTEXT.md` maintenance — mandatory on every commit
+
+`CONTEXT.md` is the single source of truth for this project.
+Claude Code owns it. Update it on every commit — not at the end of the session.
+Never let `CONTEXT.md` fall behind the actual repo state.
+
+### What to update and when
+
+**After every commit:**
+- Set `last_commit` to the commit message just made
+- Set `last_updated` to today's date
+
+**When a backlog item is completed:**
+- Change `⬜ Open` to `✅ Done` on that row
+- Do this in the same commit that completes the work — not after
+- Never leave a completed item marked Open
+
+**When a backlog item is blocked:**
+- Change to `🔴 Blocked` and add the ISS ref that caused it
+- Create the corresponding ISS entry in Issues + Experiments table
+
+**When a new skill is committed to `skills/`:**
+- Add a row to the Skills library table
+- Set status to `✅ Live`
+- Update `skills_committed` count in Current state block
+- Update `skills/manifest.json` in the same commit
+- Add a note if the skill should be uploaded to Claude Settings → Customize → Skills
+
+**When a new ADR is opened:**
+- Add a row to the Open decisions table
+- Assign the next ADR number in sequence
+
+**When an ADR is resolved:**
+- Change status to `✅ Resolved` and note the decision in one line
+
+**When an ADR is reopened:**
+- Change status to `🔴 Reopened`
+- Add the ISS ref that caused the reopen in the final column
+- Do not delete the previous resolution — history must be preserved
+
+**When a parking lot item is activated:**
+- Move it from Parking lot to Prioritised backlog
+- Add at the correct dependency position
+- Remove from Parking lot table
+
+---
+
+### Backlog status rules
+
+Five states only — no others:
+
+| Symbol | Meaning |
+|---|---|
+| ⬜ Open | Not started |
+| 🔄 In progress | Started this session, not yet committed |
+| ✅ Done | Committed to main |
+| 🔴 Blocked | Cannot proceed — broken dependency, bug, or rework required |
+| 🧪 Experiment | Deliberately paused — A/B test or outcome pending |
+
+Mark an item 🔄 In progress when you begin work on it.
+Mark it ✅ Done in the same commit that completes it.
+Never mark Done before the commit exists.
+When blocking an item — always create an ISS entry first.
+
+---
+
+### Issues, experiments and rework
+
+When a bug, enhancement, experiment, or rework is identified:
+
+1. Add a row to the Issues, experiments + rework table in `CONTEXT.md`
+2. Assign the next ref in sequence per type:
+   - ISS-001 — bug or breakage
+   - ENH-001 — enhancement to existing skill or workflow
+   - EXP-001 — deliberate experiment or A/B test
+   - RWK-001 — rework triggered by changed decision or new information
+   - FEA-001 — feature request (new capability not yet scoped)
+3. If it blocks a backlog item — mark that item 🔴 Blocked and add the ISS ref
+4. If it reopens an ADR — update the ADR status to 🔴 Reopened and add the ISS ref
+5. When resolved — mark ✅ Resolved with a one-line outcome note
+   and unblock any dependent backlog items
+
+Experiment lifecycle:
+  🧪 Running → ✅ Concluded [winner noted] or ❌ Inconclusive [next step noted]
+
+---
+
+### `CONTEXT.md` update commit convention
+
+When the only change in a commit is a `CONTEXT.md` status update:
+
+```
+update CONTEXT.md — [item completed or state change]
+```
+
+When `CONTEXT.md` is updated alongside real work, fold it into
+the same commit — do not create a separate commit just for `CONTEXT.md`.
+
+---
+
+## Claude Skills sync — manual step after meta-skill commits
+
+Skills committed to the repo are gtmstack skills — they live in GitHub
+and render on the site. They are not automatically available in Claude.
+
+When a meta-skill is committed and validated after its first real run,
+manually upload the .md file to Claude Settings → Customize → Skills.
+This makes Claude follow the skill structure in project chat sessions
+without prompting.
+
+Priority skills to sync to Claude Settings:
+- `content/write-build-log.md`          ← sync after Build Log 001 is run
+- `content/extract-linkedin-posts.md`   ← sync after first LinkedIn run
+- `content/write-beehiiv-issue.md`      ← sync after Issue 001 is drafted
+
+Claude Code adds a note to `CONTEXT.md` when a skill is ready to sync.
+Format: `⚡ Ready to sync to Claude Settings — [skill filename]`
+
+---
+
+## Session handoff — print at end of every session
+
+After the final commit of a session, print this block to the terminal.
+
+```
+>_ gtmstack — SESSION HANDOFF
+────────────────────────────────────────
+Commits this session:
+  - [list each commit message with short hash]
+
+Backlog changes:
+  - [list items marked Done, Blocked, or moved to Experiment]
+  - [list any new items added]
+
+Issues + experiments:
+  - [list any new ISS / ENH / EXP / RWK / FEA entries opened]
+  - [list any resolved this session]
+
+CONTEXT.md: updated
+skills/manifest.json: [updated | no changes]
+Claude Settings sync needed: [skill filename | none]
+
+Next priority (from backlog):
+  #[N] — [next Open item and its dependency status]
+────────────────────────────────────────
+PASTE INTO GTMSTACK PROJECT CHAT:
+
+[paste full contents of CONTEXT.md here]
+────────────────────────────────────────
+```
+
+---
+
 *>_ gtmstack.ai — Unfiltered AI marketing. Built live.*

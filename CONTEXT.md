@@ -8,12 +8,12 @@
 ## Current state
 
 ```
-last_updated:     May 2026
-last_commit:      add build log 000 — content workflow planning session, update CONTEXT.md
+last_updated:     2026-05-06
+last_commit:      update CLAUDE.md — final rules: issue tracking, experiment states, Claude Skills sync, update CONTEXT.md
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
-skills_committed: 0 (template only — _template.md)
+skills_committed: 0 marketing skills (template + 1 meta-skill: content/write-build-log.md v1.0)
 ```
 
 -----
@@ -28,7 +28,8 @@ skills_committed: 0 (template only — _template.md)
 - Engine architecture committed: `engine/architecture/`
 - Skill template committed: `skills/_template.md`
 - Build log tracker committed: `content/build-log/tracker.md`
-- Skills manifest: `skills/manifest.json` (create if missing)
+- Skills manifest: `skills/manifest.json` (committed — empty index, v1.0.0)
+- First meta-skill committed: `content/write-build-log.md` v1.0 (pending first end-to-end run on Build Log 001)
 
 -----
 
@@ -47,11 +48,12 @@ gtmstack/
 │   ├── tokens.json
 │   ├── style-guide.md
 │   └── voice.md
-├── commercial/            ← MUST be in .gitignore — do not commit publicly
+├── commercial/            ← gitignored (local only) — files removed from public index in commit ede1732
 ├── content/
 │   ├── build-log/
 │   │   ├── tracker.md
 │   │   └── 000-planning-session-may-2026.md
+│   ├── write-build-log.md  ← first meta-skill (v1.0)
 │   └── lead-magnets/      ← create when first lead magnet is ready
 ├── data/
 ├── engine/
@@ -100,8 +102,8 @@ Work through these in order. Do not skip ahead.
 
 |# |Job                                                                              |Dependency                |Status|
 |--|---------------------------------------------------------------------------------|--------------------------|------|
-|1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |⬜ Open|
-|2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |⬜ Open|
+|1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |✅ Done|
+|2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |✅ Done|
 |3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |⬜ Open|
 |4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|⬜ Open|
 |5 |Build meta-skill: content/publish-skill-to-site.md                               |write-beehiiv committed   |⬜ Open|
@@ -118,7 +120,7 @@ Work through these in order. Do not skip ahead.
 - [ ] Beehiiv: turn off “Approval required” (Settings → Publication → Subscription)
 - [ ] Site page title: change to “gtmstack.ai — Unfiltered AI marketing. Built live.”
 - [ ] Meta description: update from Beehiiv CDN default to brand voice
-- [ ] commercial/: confirm in .gitignore — must not be publicly indexed
+- [x] commercial/: in .gitignore + tracked files removed from public index (ede1732)
 - [ ] Skill numbering convention: establish before library grows (recommendation: DG-001, PMM-001 function prefix)
 
 -----
@@ -129,7 +131,7 @@ These power the content workflow. Build before any marketing skills.
 
 |Skill                               |Purpose                                         |Priority  |
 |------------------------------------|------------------------------------------------|----------|
-|content/write-build-log.md          |Structured build log from session notes         |P1 — first|
+|content/write-build-log.md          |Structured build log from session notes         |P1 — ✅ committed v1.0|
 |content/extract-linkedin-posts.md   |3–5 LinkedIn posts from any build log           |P1        |
 |content/write-beehiiv-issue.md      |Newsletter draft from skill card + build log    |P1        |
 |content/publish-skill-to-site.md    |GitHub commit → Vercel → live skill card        |P1        |
@@ -173,6 +175,15 @@ Do not action until trigger is met.
 
 -----
 
+## Issues, experiments + rework
+
+Refs assigned per type: ISS-NNN (bug), ENH-NNN (enhancement), EXP-NNN (experiment), RWK-NNN (rework), FEA-NNN (feature request). See `CLAUDE.md` for the full rule.
+
+| Ref | Type | Related to | Description | Status |
+|---|---|---|---|---|
+
+-----
+
 ## Skills library
 
 |Skill               |Status|File|
@@ -185,7 +196,9 @@ See `skills/manifest.json` for full index.
 
 ## Next actions for Claude Code
 
-[Claude Code updates this section after every session]
+- Begin Backlog #3: build `content/extract-linkedin-posts.md` (second meta-skill, dependency #2 ✅ met)
+- Run Build Log 001 end-to-end through `content/write-build-log.md` to validate the skill, then add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
+- Decide whether to purge `commercial/model.md` and `commercial/positioning.md` from git history before merging branch to main (current state: untracked but still in pre-`ede1732` history)
 
 -----
 
