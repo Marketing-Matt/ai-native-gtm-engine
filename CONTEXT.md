@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      fix holding-page copy + open ISS-001 (parked-classification remediation)
+last_commit:      update CONTEXT.md — drop re-cat request from ISS-001, expand redirect instructions
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
@@ -185,7 +185,7 @@ Refs assigned per type: ISS-NNN (bug), ENH-NNN (enhancement), EXP-NNN (experimen
 
 | Ref | Type | Related to | Description | Status |
 |---|---|---|---|---|
-| ISS-001 | Bug | Site / Vercel deploy | Site classified as "parked" by corporate SWG vendors (reported via Okta-gated network). Root causes: (1) Vercel Deployment Protection toggled on → 403 to all anon fetches; (2) no robots.txt / sitemap; (3) no OG image, JSON-LD, canonical URL; (4) "Launching soon" copy on holding page; (5) apex+www serve duplicate content; (6) fresh `.ai` domain with no inbound authority signals. Fixes shipped this session: (1) Vercel toggle off, (2) robots.txt added, (3) sitemap.ts added, (4) OG image + JSON-LD + canonical added, (5) holding-page copy rewritten present-tense. **Still pending:** Vercel redirect direction (apex canonical, 308 from www), submit re-categorisation requests to relevant SWG vendor (Symantec/BlueCoat, Talos, Zscaler, etc — vendor name TBC from ex-colleague). | 🔄 In progress |
+| ISS-001 | Bug | Site / Vercel deploy | Site classified as "parked" by corporate SWG vendors (reported via Okta-gated network). Root causes: (1) Vercel Deployment Protection toggled on → 403 to all anon fetches; (2) no robots.txt / sitemap; (3) no OG image, JSON-LD, canonical URL; (4) "Launching soon" copy on holding page; (5) apex+www serve duplicate content; (6) fresh `.ai` domain with no inbound authority signals. Fixes shipped this session: (1) Vercel toggle off, (2) robots.txt added, (3) sitemap.ts added, (4) OG image + JSON-LD + canonical added, (5) holding-page copy rewritten present-tense. **Still pending:** Vercel redirect direction (apex canonical, 308 from www) — user-action, instructions provided. **Decision:** vendor re-categorisation request dropped — rely on organic re-crawl after structural fixes; revisit only if still blocked at 4–6 weeks. | 🔄 In progress |
 
 -----
 
@@ -201,7 +201,7 @@ See `skills/manifest.json` for full index.
 
 ## Next actions for Claude Code
 
-- ISS-001 follow-ups (out-of-band of Claude Code): (a) Vercel → Domains → Edit, set apex canonical with 308 from www; (b) get SWG vendor name from ex-colleague; (c) once preview deploy verifies, submit re-categorisation request to that vendor (sitereview.bluecoat.com / talosintelligence.com / urlfiltering.paloaltonetworks.com / fortiguard.com/webfilter / etc.)
+- ISS-001 follow-up (user-action, out-of-band of Claude Code): Vercel → Project → Settings → Domains → edit `www.gtmstack.ai` → "Redirect to" = `gtmstack.ai`, status = 308 Permanent. Then edit `gtmstack.ai` → "Redirect to" = No Redirect. Verify with `curl -IL` on both hostnames
 - Verify the branch preview deploy renders correctly in Vercel before merging to main
 - Begin Backlog #5: `content/publish-skill-to-site.md` (CON-004 — dependency #4 ✅ met). This is the final P1 meta-skill before Resolve Pipeline (#6) and Skill 001 (#7) unblock.
 - After first end-to-end run of `write-build-log.md` on Build Log 001: add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
