@@ -17,9 +17,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gtmstack.ai"),
   title: "gtmstack.ai — Unfiltered AI marketing. Built live.",
   description:
     "A learning-in-public skills platform for B2B marketing leaders. Every skill, every agent, every workflow built live — using Claude.",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
@@ -32,6 +36,13 @@ export const metadata: Metadata = {
     siteName: "gtmstack.ai",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "gtmstack.ai — Unfiltered AI marketing. Built live.",
+    description:
+      "A learning-in-public skills platform for B2B marketing leaders.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -41,6 +52,34 @@ export const viewport: Viewport = {
   themeColor: "#0A0A0A",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gtmstack.ai#organization",
+      name: "gtmstack.ai",
+      url: "https://gtmstack.ai",
+      description:
+        "A learning-in-public skills platform for B2B marketing leaders.",
+      logo: "https://gtmstack.ai/favicon.svg",
+      founder: { "@type": "Person", name: "Matt Browning" },
+      sameAs: [
+        "https://github.com/Marketing-Matt/gtmstack",
+        "https://newsletter.gtmstack.ai",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gtmstack.ai#website",
+      url: "https://gtmstack.ai",
+      name: "gtmstack.ai",
+      description: "Unfiltered AI marketing. Built live.",
+      publisher: { "@id": "https://gtmstack.ai#organization" },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -48,7 +87,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${plexMono.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
