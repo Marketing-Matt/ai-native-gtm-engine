@@ -9,11 +9,11 @@
 
 ```
 last_updated:     2026-05-06
-last_commit:      update CONTEXT.md — backlog #4 in progress (CON-003 content/write-beehiiv-issue.md)
+last_commit:      add content/write-beehiiv-issue.md — CON-003 third meta-skill (v1.0)
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
-skills_committed: 0 marketing skills (template + 2 meta-skills committed: CON-001, CON-002)
+skills_committed: 0 marketing skills (template + 3 meta-skills committed: CON-001, CON-002, CON-003)
 ```
 
 -----
@@ -31,6 +31,7 @@ skills_committed: 0 marketing skills (template + 2 meta-skills committed: CON-00
 - Skills manifest: `skills/manifest.json` (committed — empty index, v1.0.0)
 - First meta-skill committed: `content/write-build-log.md` v1.0 (CON-001)
 - Second meta-skill committed: `content/extract-linkedin-posts.md` v1.0 (CON-002)
+- Third meta-skill committed: `content/write-beehiiv-issue.md` v1.0 (CON-003)
 
 -----
 
@@ -56,6 +57,7 @@ gtmstack/
 │   │   └── 000-planning-session-may-2026.md
 │   ├── write-build-log.md       ← CON-001 — first meta-skill (v1.0)
 │   ├── extract-linkedin-posts.md ← CON-002 — second meta-skill (v1.0)
+│   ├── write-beehiiv-issue.md   ← CON-003 — third meta-skill (v1.0)
 │   └── lead-magnets/            ← create when first lead magnet is ready
 ├── data/
 ├── engine/
@@ -107,7 +109,7 @@ Work through these in order. Do not skip ahead.
 |1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |✅ Done|
 |2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |✅ Done|
 |3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |✅ Done|
-|4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|🔄 In progress|
+|4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|✅ Done|
 |5 |Build meta-skill: content/publish-skill-to-site.md                               |write-beehiiv committed   |⬜ Open|
 |6 |Resolve GitHub → Vercel publish pipeline (GitHub Action or document manual steps)|publish-skill skill built |⬜ Open|
 |7 |Build Skill 001 — Audience Segmentation                                          |Pipeline resolved         |⬜ Open|
@@ -135,7 +137,7 @@ These power the content workflow. Build before any marketing skills.
 |------|------------------------------------|------------------------------------------------|---------------------|
 |CON-001|content/write-build-log.md          |Structured build log from session notes         |P1 — ✅ committed v1.0|
 |CON-002|content/extract-linkedin-posts.md   |3–5 LinkedIn posts from any build log           |P1 — ✅ committed v1.0|
-|CON-003|content/write-beehiiv-issue.md      |Newsletter draft from skill card + build log    |P1 — ⬜ Open          |
+|CON-003|content/write-beehiiv-issue.md      |Newsletter draft from skill card + build log    |P1 — ✅ committed v1.0|
 |CON-004|content/publish-skill-to-site.md    |GitHub commit → Vercel → live skill card        |P1 — ⬜ Open          |
 |CON-005|content/codify-insight-to-skill.md  |Insight → new skill card draft                  |P2 — ⬜ Open          |
 |CON-006|content/narrate-skill-elevenlabs.md |ElevenLabs script from skill card               |P2 — ⬜ Open          |
@@ -198,9 +200,10 @@ See `skills/manifest.json` for full index.
 
 ## Next actions for Claude Code
 
-- Begin Backlog #4: `content/write-beehiiv-issue.md` (CON-003 — dependency #3 ✅ met)
+- Begin Backlog #5: `content/publish-skill-to-site.md` (CON-004 — dependency #4 ✅ met). This is the final P1 meta-skill before Resolve Pipeline (#6) and Skill 001 (#7) unblock.
 - After first end-to-end run of `write-build-log.md` on Build Log 001: add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
 - After first end-to-end run of `extract-linkedin-posts.md`: add `⚡ Ready to sync to Claude Settings — content/extract-linkedin-posts.md`
+- After first end-to-end run of `write-beehiiv-issue.md` (Issue 001): add `⚡ Ready to sync to Claude Settings — content/write-beehiiv-issue.md`
 - Fix site page title and meta description (immediate fixes still open)
 
 -----
