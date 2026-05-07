@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-06
-last_commit:      add content/extract-linkedin-posts.md — CON-002 second meta-skill (v1.0)
+last_commit:      update CONTEXT.md — backlog #4 in progress (CON-003 content/write-beehiiv-issue.md)
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
@@ -107,7 +107,7 @@ Work through these in order. Do not skip ahead.
 |1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |✅ Done|
 |2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |✅ Done|
 |3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |✅ Done|
-|4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|⬜ Open|
+|4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|🔄 In progress|
 |5 |Build meta-skill: content/publish-skill-to-site.md                               |write-beehiiv committed   |⬜ Open|
 |6 |Resolve GitHub → Vercel publish pipeline (GitHub Action or document manual steps)|publish-skill skill built |⬜ Open|
 |7 |Build Skill 001 — Audience Segmentation                                          |Pipeline resolved         |⬜ Open|
