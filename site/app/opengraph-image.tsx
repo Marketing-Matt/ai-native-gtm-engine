@@ -5,7 +5,17 @@ export const alt = "gtmstack.ai — Unfiltered AI marketing. Built live.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+const PLEX_MONO_BOLD =
+  "https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5/files/ibm-plex-mono-latin-700-normal.woff2";
+const PLEX_MONO_REGULAR =
+  "https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5/files/ibm-plex-mono-latin-400-normal.woff2";
+
+export default async function Image() {
+  const [plexBold, plexRegular] = await Promise.all([
+    fetch(PLEX_MONO_BOLD).then((r) => r.arrayBuffer()),
+    fetch(PLEX_MONO_REGULAR).then((r) => r.arrayBuffer()),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -17,7 +27,7 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          fontFamily: "monospace",
+          fontFamily: "IBM Plex Mono",
         }}
       >
         <div
@@ -36,6 +46,7 @@ export default function Image() {
           style={{
             color: "#FFFFFF",
             fontSize: 56,
+            fontWeight: 700,
             marginTop: 40,
             lineHeight: 1.15,
             display: "flex",
@@ -47,6 +58,7 @@ export default function Image() {
           style={{
             color: "#FFFFFF",
             fontSize: 56,
+            fontWeight: 700,
             lineHeight: 1.15,
             display: "flex",
           }}
@@ -57,6 +69,7 @@ export default function Image() {
           style={{
             color: "#888888",
             fontSize: 26,
+            fontWeight: 400,
             marginTop: 32,
             display: "flex",
           }}
@@ -65,6 +78,22 @@ export default function Image() {
         </div>
       </div>
     ),
-    size,
+    {
+      ...size,
+      fonts: [
+        {
+          name: "IBM Plex Mono",
+          data: plexBold,
+          style: "normal",
+          weight: 700,
+        },
+        {
+          name: "IBM Plex Mono",
+          data: plexRegular,
+          style: "normal",
+          weight: 400,
+        },
+      ],
+    },
   );
 }

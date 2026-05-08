@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      update CONTEXT.md — ISS-001 redirect flip confirmed live, only merge-to-main outstanding
+last_commit:      fix OG image typeface — load IBM Plex Mono instead of Satori default monospace
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
