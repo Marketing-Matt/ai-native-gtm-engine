@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      fix OG image — switch to Vercel Google Fonts pattern, add fallback for blank-canvas case
+last_commit:      log ENH-001 (OG image visual polish) — moving on, ISS-001 ready to close on merge
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
@@ -186,6 +186,7 @@ Refs assigned per type: ISS-NNN (bug), ENH-NNN (enhancement), EXP-NNN (experimen
 | Ref | Type | Related to | Description | Status |
 |---|---|---|---|---|
 | ISS-001 | Bug | Site / Vercel deploy | Site classified as "parked" by corporate SWG vendors (reported via Okta-gated network). Root causes: (1) Vercel Deployment Protection toggled on → 403 to all anon fetches; (2) no robots.txt / sitemap; (3) no OG image, JSON-LD, canonical URL; (4) "Launching soon" copy on holding page; (5) apex+www serve duplicate content; (6) fresh `.ai` domain with no inbound authority signals. Fixes shipped this session: (1) Vercel toggle off ✅, (2) robots.txt added ✅ (branch), (3) sitemap.ts added ✅ (branch), (4) OG image + JSON-LD + canonical added ✅ (branch), (5) holding-page copy rewritten present-tense ✅ (branch), (6) www → apex 308 redirect flipped ✅ (Vercel domain config, live). **Still pending:** merge `claude/planning-session-commit-VDGen` to `main` to deploy fixes (2)–(5) to production. **Decision:** vendor re-categorisation request dropped — rely on organic re-crawl after structural fixes; revisit only if still blocked at 4–6 weeks. | 🔄 In progress |
+| ENH-001 | Enhancement | Site / OG image | Initial OG image (`site/app/opengraph-image.tsx`) renders functional but visually underwhelming — flagged "ok, not great" on first inspection. Currently: black bg + lime brand mark + white headline + grey subline, all in IBM Plex Mono. Likely needs: (a) more visual texture (terminal chrome with 6px corners per brand?); (b) better hierarchy / proportion; (c) a markdown-native motif (`#`, `>`, code-block accents). Out of scope for ISS-001 — does not affect SWG classification, only social share preview crispness. Pick up when brand-design time is available. | ⬜ Open |
 
 -----
 
