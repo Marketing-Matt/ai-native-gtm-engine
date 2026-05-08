@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      fix OG image typeface — load IBM Plex Mono instead of Satori default monospace
+last_commit:      fix OG image — switch to Vercel Google Fonts pattern, add fallback for blank-canvas case
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)

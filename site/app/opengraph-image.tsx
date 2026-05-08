@@ -5,16 +5,45 @@ export const alt = "gtmstack.ai — Unfiltered AI marketing. Built live.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const PLEX_MONO_BOLD =
-  "https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5/files/ibm-plex-mono-latin-700-normal.woff2";
-const PLEX_MONO_REGULAR =
-  "https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5/files/ibm-plex-mono-latin-400-normal.woff2";
+async function loadGoogleFont(
+  family: string,
+  weight: number,
+): Promise<ArrayBuffer> {
+  const cssUrl = `https://fonts.googleapis.com/css2?family=${family.replace(
+    / /g,
+    "+",
+  )}:wght@${weight}`;
+  const css = await (
+    await fetch(cssUrl, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36",
+      },
+    })
+  ).text();
+  const match = css.match(
+    /src: url\((.+?)\) format\('(opentype|truetype)'\)/,
+  );
+  if (!match) {
+    throw new Error(`Could not extract font URL for ${family} ${weight}`);
+  }
+  return await (await fetch(match[1])).arrayBuffer();
+}
 
 export default async function Image() {
-  const [plexBold, plexRegular] = await Promise.all([
-    fetch(PLEX_MONO_BOLD).then((r) => r.arrayBuffer()),
-    fetch(PLEX_MONO_REGULAR).then((r) => r.arrayBuffer()),
-  ]);
+  let fonts: { name: string; data: ArrayBuffer; weight: 400 | 700; style: "normal" }[] = [];
+  try {
+    const [bold, regular] = await Promise.all([
+      loadGoogleFont("IBM Plex Mono", 700),
+      loadGoogleFont("IBM Plex Mono", 400),
+    ]);
+    fonts = [
+      { name: "IBM Plex Mono", data: bold, weight: 700, style: "normal" },
+      { name: "IBM Plex Mono", data: regular, weight: 400, style: "normal" },
+    ];
+  } catch {
+    // Font load failed — fall back to Satori default so we never serve a blank PNG.
+  }
 
   return new ImageResponse(
     (
@@ -80,20 +109,7 @@ export default async function Image() {
     ),
     {
       ...size,
-      fonts: [
-        {
-          name: "IBM Plex Mono",
-          data: plexBold,
-          style: "normal",
-          weight: 700,
-        },
-        {
-          name: "IBM Plex Mono",
-          data: plexRegular,
-          style: "normal",
-          weight: 400,
-        },
-      ],
+      fonts: fonts.length > 0 ? fonts : undefined,
     },
   );
 }
