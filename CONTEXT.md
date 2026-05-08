@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      update CONTEXT.md — drop re-cat request from ISS-001, expand redirect instructions
+last_commit:      update CONTEXT.md — ISS-001 redirect flip confirmed live, only merge-to-main outstanding
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
@@ -185,7 +185,7 @@ Refs assigned per type: ISS-NNN (bug), ENH-NNN (enhancement), EXP-NNN (experimen
 
 | Ref | Type | Related to | Description | Status |
 |---|---|---|---|---|
-| ISS-001 | Bug | Site / Vercel deploy | Site classified as "parked" by corporate SWG vendors (reported via Okta-gated network). Root causes: (1) Vercel Deployment Protection toggled on → 403 to all anon fetches; (2) no robots.txt / sitemap; (3) no OG image, JSON-LD, canonical URL; (4) "Launching soon" copy on holding page; (5) apex+www serve duplicate content; (6) fresh `.ai` domain with no inbound authority signals. Fixes shipped this session: (1) Vercel toggle off, (2) robots.txt added, (3) sitemap.ts added, (4) OG image + JSON-LD + canonical added, (5) holding-page copy rewritten present-tense. **Still pending:** Vercel redirect direction (apex canonical, 308 from www) — user-action, instructions provided. **Decision:** vendor re-categorisation request dropped — rely on organic re-crawl after structural fixes; revisit only if still blocked at 4–6 weeks. | 🔄 In progress |
+| ISS-001 | Bug | Site / Vercel deploy | Site classified as "parked" by corporate SWG vendors (reported via Okta-gated network). Root causes: (1) Vercel Deployment Protection toggled on → 403 to all anon fetches; (2) no robots.txt / sitemap; (3) no OG image, JSON-LD, canonical URL; (4) "Launching soon" copy on holding page; (5) apex+www serve duplicate content; (6) fresh `.ai` domain with no inbound authority signals. Fixes shipped this session: (1) Vercel toggle off ✅, (2) robots.txt added ✅ (branch), (3) sitemap.ts added ✅ (branch), (4) OG image + JSON-LD + canonical added ✅ (branch), (5) holding-page copy rewritten present-tense ✅ (branch), (6) www → apex 308 redirect flipped ✅ (Vercel domain config, live). **Still pending:** merge `claude/planning-session-commit-VDGen` to `main` to deploy fixes (2)–(5) to production. **Decision:** vendor re-categorisation request dropped — rely on organic re-crawl after structural fixes; revisit only if still blocked at 4–6 weeks. | 🔄 In progress |
 
 -----
 
@@ -201,7 +201,7 @@ See `skills/manifest.json` for full index.
 
 ## Next actions for Claude Code
 
-- ISS-001 follow-up (user-action, out-of-band of Claude Code): Vercel → Project → Settings → Domains → edit `www.gtmstack.ai` → "Redirect to" = `gtmstack.ai`, status = 308 Permanent. Then edit `gtmstack.ai` → "Redirect to" = No Redirect. Verify with `curl -IL` on both hostnames
+- ISS-001 final step: verify preview deploy of `claude/planning-session-commit-VDGen` renders correctly (terminal copy, /robots.txt, /sitemap.xml, /opengraph-image, view-source for JSON-LD + canonical), then merge branch to `main`. Once production deploy lands, mark ISS-001 ✅ Resolved
 - Verify the branch preview deploy renders correctly in Vercel before merging to main
 - Begin Backlog #5: `content/publish-skill-to-site.md` (CON-004 — dependency #4 ✅ met). This is the final P1 meta-skill before Resolve Pipeline (#6) and Skill 001 (#7) unblock.
 - After first end-to-end run of `write-build-log.md` on Build Log 001: add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
