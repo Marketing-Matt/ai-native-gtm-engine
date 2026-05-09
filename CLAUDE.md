@@ -124,4 +124,20 @@ When in doubt, the token file ([`brand/tokens.json`](./brand/tokens.json)) wins.
 
 ---
 
+## gtmstack.ai session skills
+
+When I say or type "stack":
+→ Load ~/.claude/skills/session-starter-voice.md
+→ Acknowledge once, fetch silently, present agenda
+
+For any written gtmstack session:
+→ Load ~/.claude/skills/session-starter.md
+→ Fetch https://gtmstack.ai before responding
+
+Repo: https://github.com/Marketing-Matt/gtmstack
+Cadence: Tue 8:15am voice · Fri 12pm written
+Email: matt@gtmstack.ai
+
+---
+
 *>_ gtmstack.ai — Unfiltered AI marketing. Built live.*

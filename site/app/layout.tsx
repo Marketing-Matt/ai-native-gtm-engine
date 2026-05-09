@@ -48,6 +48,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${plexMono.variable} ${inter.variable}`}>
+      import { Analytics } from '@vercel/analytics/react'
+      <Analytics />
       <body>{children}</body>
     </html>
   );
