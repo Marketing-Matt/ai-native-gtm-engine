@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      update CONTEXT.md — correct backlog sequence, #3 is next not #5
+last_commit:      add dependency enforcement rule to CLAUDE.md
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)

@@ -185,6 +185,29 @@ When blocking an item — always create an ISS entry first.
 
 ---
 
+### Dependency enforcement — mandatory before starting any backlog item
+
+Before beginning any backlog item, Claude Code must:
+
+1. Read the current backlog in `CONTEXT.md`
+2. Find the lowest-numbered ⬜ Open item
+3. Verify its dependency is met (check the Dependency column)
+4. Confirm the dependency file or commit actually exists in the repo
+5. Only then begin work — on that item, not any other
+
+If the dependency is not met, stop and report why.
+If a higher-numbered item is attempted before lower ones are complete,
+that is a critical error. Stop, report it, and correct the backlog.
+
+Never begin a task because it seems ready or interesting.
+Always begin the lowest-numbered Open item whose dependency is confirmed.
+
+This rule applies to backlog items only. Issues (ISS / ENH / EXP / RWK / FEA)
+are a separate workstream — they may be addressed when raised by the user
+without going through the backlog sequence.
+
+---
+
 ### Issues, experiments and rework
 
 When a bug, enhancement, experiment, or rework is identified:
