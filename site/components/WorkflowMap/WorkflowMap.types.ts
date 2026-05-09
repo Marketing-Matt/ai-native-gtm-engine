@@ -1,21 +1,28 @@
 export type NodeStatus = 'live' | 'in-progress' | 'planned';
 
+export type FilterId = 'all' | 'live' | 'in-progress' | 'planned';
+
+export type LayerTint = 'violet' | 'amber' | 'green';
+
+export type LayerCols = 1 | 3 | 4 | 'last-2x';
+
 export interface WorkflowNode {
   id: string;
   title: string;
-  subtitle: string;
+  sub: string;
   status: NodeStatus;
-  description: string;
-  repoPath?: string;
-  isWide?: boolean;
-  isDashed?: boolean;
+  path?: string;
+  github?: string;
+  note?: string;
+  feature?: boolean;
 }
 
 export interface WorkflowLayer {
   id: string;
-  label: string;
+  name: string;
+  cols: LayerCols;
   nodes: WorkflowNode[];
-  tint?: string;
-  isContainer?: boolean;
-  containerLabel?: string;
+  tint?: LayerTint;
+  container?: string;
+  containerHref?: string;
 }

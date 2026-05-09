@@ -1,78 +1,104 @@
 'use client';
 
 import styles from '../WorkflowMap.module.css';
-import type { WorkflowLayer, WorkflowNode } from '../WorkflowMap.types';
+import type {
+  FilterId,
+  LayerCols,
+  LayerTint,
+  WorkflowLayer,
+  WorkflowNode,
+} from '../WorkflowMap.types';
 import { NodeCard } from './NodeCard';
 
 interface Props {
   layer: WorkflowLayer;
-  isCollapsed: boolean;
-  onToggle: (layerId: string) => void;
-  onNodeClick: (node: WorkflowNode) => void;
-  activeNodeId: string | null;
+  filter: FilterId;
+  focusedKey: string | null;
+  onSelect: (node: WorkflowNode, layerId: string, layerName: string) => void;
 }
 
-export function LayerRow({
-  layer,
-  isCollapsed,
-  onToggle,
-  onNodeClick,
-  activeNodeId,
-}: Props) {
-  const tintStyle = layer.tint ? { color: layer.tint } : undefined;
+const colsClass: Record<LayerCols, string> = {
+  1: styles.cols1 ?? '',
+  3: styles.cols3 ?? '',
+  4: styles.cols4 ?? '',
+  'last-2x': styles.colsLast2x ?? '',
+};
+
+const tintClass: Record<LayerTint, string> = {
+  violet: styles.tintViolet ?? '',
+  amber: styles.tintAmber ?? '',
+  green: styles.tintGreen ?? '',
+};
+
+export function LayerRow({ layer, filter, focusedKey, onSelect }: Props) {
+  const liveCount = layer.nodes.filter((n) => n.status === 'live').length;
+  const total = layer.nodes.length;
 
   const grid = (
-    <div className={styles.grid}>
-      {layer.nodes.map((node) => (
-        <NodeCard
-          key={node.id}
-          node={node}
-          isActive={activeNodeId === node.id}
-          onClick={onNodeClick}
-        />
-      ))}
+    <div className={`${styles.nodes} ${colsClass[layer.cols]}`}>
+      {layer.nodes.map((node) => {
+        const dimmed = filter !== 'all' && node.status !== filter;
+        const key = `${layer.id}/${node.id}`;
+        return (
+          <NodeCard
+            key={node.id}
+            node={node}
+            layerId={layer.id}
+            layerName={layer.name}
+            dimmed={dimmed}
+            focused={focusedKey === key}
+            onSelect={onSelect}
+          />
+        );
+      })}
     </div>
   );
 
-  return (
-    <section className={styles.layer} aria-labelledby={`layer-${layer.id}`}>
-      <button
-        type="button"
-        id={`layer-${layer.id}`}
-        className={styles.layerHeader}
-        aria-expanded={!isCollapsed}
-        aria-controls={`layer-body-${layer.id}`}
-        onClick={() => onToggle(layer.id)}
-      >
-        <span className={styles.layerPrefix}>&gt;_</span>
-        {layer.tint ? (
-          <span className={styles.layerTint} style={tintStyle} aria-hidden />
-        ) : null}
-        <span className={styles.layerLabel}>{layer.label}</span>
-        {isCollapsed ? (
-          <span className={styles.layerCount}>
-            [{layer.nodes.length} nodes]
-          </span>
-        ) : null}
-        <span className={styles.layerToggle} aria-hidden>
-          {isCollapsed ? '▸' : '▾'}
-        </span>
-      </button>
+  const bodyClassName = [
+    styles.layerBody,
+    layer.tint ? tintClass[layer.tint] : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-      {!isCollapsed ? (
-        <div id={`layer-body-${layer.id}`} className={styles.layerBody}>
-          {layer.isContainer ? (
-            <div className={styles.containerWrap}>
-              {layer.containerLabel ? (
-                <p className={styles.containerLabel}>{layer.containerLabel}</p>
-              ) : null}
-              {grid}
-            </div>
-          ) : (
-            grid
-          )}
-        </div>
-      ) : null}
+  return (
+    <section
+      className={styles.layer}
+      aria-labelledby={`layer-${layer.id}-label`}
+    >
+      <div className={styles.layerHead}>
+        <span
+          id={`layer-${layer.id}-label`}
+          className={`${styles.tLabel} ${styles.layerLabel}`}
+        >
+          &gt;_ {layer.id} / {layer.name}
+        </span>
+        <span className={styles.layerMeta}>
+          {liveCount}/{total} live
+        </span>
+      </div>
+      <div className={styles.layerRule} aria-hidden />
+      <div className={bodyClassName}>
+        {layer.container ? (
+          <div className={styles.container}>
+            {layer.containerHref ? (
+              <a
+                className={styles.containerLabel}
+                href={layer.containerHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {layer.container} ↗
+              </a>
+            ) : (
+              <span className={styles.containerLabel}>{layer.container}</span>
+            )}
+            {grid}
+          </div>
+        ) : (
+          grid
+        )}
+      </div>
     </section>
   );
 }
