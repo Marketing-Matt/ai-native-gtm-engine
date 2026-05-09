@@ -1,0 +1,463 @@
+/*
+ * WorkflowMap — token-native CSS module.
+ *
+ * All hex values live here, exposed as CSS custom properties.
+ * Component .tsx files reference var(--token) only. Theme is
+ * applied by setting [data-theme="light"] on <html>.
+ *
+ * Light mode is EXPERIMENTAL — not brand standard.
+ */
+
+.root {
+  --black: #0a0a0a;
+  --ink: #141414;
+  --zinc: #1e1e1e;
+  --grey: #333333;
+  --mid: #6e6e6e;
+  --muted: #9a9a9a;
+  --white: #f5f5f5;
+  --lime: #a6ff00;
+  --lime-dk: #2d4a00;
+
+  --status-live: #a6ff00;
+  --status-progress: #ffb020;
+  --status-planned: #6e6e6e;
+
+  --mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  position: relative;
+  color: var(--white);
+  background: var(--black);
+  font-family: var(--sans);
+  padding: 40px 20px 80px;
+}
+
+:global(html[data-theme='light']) .root {
+  --black: #f5f5f0;
+  --ink: #ebebeb;
+  --zinc: #ffffff;
+  --grey: #d0d0d0;
+  --mid: #6e6e6e;
+  --muted: #555555;
+  --white: #0a0a0a;
+  --lime: #2d4a00;
+  --lime-dk: #a6ff00;
+}
+
+/* === Theme toggle ============================================ */
+
+.themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--white);
+  background: var(--ink);
+  border: 1px solid var(--grey);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: border-color 160ms ease-out, color 160ms ease-out;
+  z-index: 20;
+}
+
+.themeToggle:hover,
+.themeToggle:focus-visible {
+  border-color: var(--lime);
+  color: var(--lime);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .themeToggle {
+    right: auto;
+    left: 20px;
+  }
+}
+
+/* === Layout =================================================== */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 28px;
+}
+
+.heading::before {
+  content: '>_ ';
+  color: var(--lime);
+}
+
+/* === Layer ==================================================== */
+
+.layer {
+  margin: 0 0 8px;
+}
+
+.layerHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--grey);
+  color: var(--muted);
+  padding: 12px 0 8px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+  transition: color 120ms ease-out, border-color 120ms ease-out;
+}
+
+.layerHeader:hover,
+.layerHeader:focus-visible {
+  color: var(--lime);
+  border-color: var(--lime);
+  outline: none;
+}
+
+.layerPrefix {
+  color: var(--lime);
+  margin-right: 8px;
+}
+
+.layerLabel {
+  flex: 1;
+}
+
+.layerCount {
+  margin-left: 12px;
+  color: var(--mid);
+  font-weight: 400;
+}
+
+.layerToggle {
+  margin-left: 12px;
+  color: var(--mid);
+  font-size: 11px;
+}
+
+.layerTint {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  border-radius: 4px;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+.layerBody {
+  padding: 16px 0 12px;
+}
+
+.containerWrap {
+  border: 1px solid var(--grey);
+  padding: 16px;
+  margin: 0 0 8px;
+}
+
+.containerLabel {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.containerLabel::before {
+  content: '# ';
+  color: var(--lime);
+}
+
+/* === Node grid ================================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardWide {
+  grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  .cardWide {
+    grid-column: span 1;
+  }
+}
+
+/* === Node card ================================================ */
+
+.card {
+  position: relative;
+  background: var(--zinc);
+  border: 1px solid var(--grey);
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  transition: border-color 120ms ease-out, color 120ms ease-out;
+}
+
+.card:hover,
+.card:focus-visible,
+.cardActive {
+  border-color: var(--lime);
+  outline: none;
+}
+
+.cardDashed {
+  border-style: dashed;
+}
+
+.cardTitle {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin: 0 0 4px;
+  padding-right: 14px;
+  line-height: 1.4;
+}
+
+.cardSubtitle {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.statusDot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.statusLive {
+  background: var(--status-live);
+}
+.statusProgress {
+  background: var(--status-progress);
+}
+.statusPlanned {
+  background: var(--status-planned);
+}
+
+/* === Arrows ================================================== */
+
+.arrow {
+  display: block;
+  margin: 0 auto;
+  width: 12px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.arrow line,
+.arrow path {
+  stroke: var(--lime);
+  fill: none;
+}
+
+/* === Detail panel ============================================ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.4);
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease-out;
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 100vw;
+  background: var(--ink);
+  border-left: 1px solid var(--grey);
+  padding: 28px 24px;
+  z-index: 40;
+  transform: translateX(100%);
+  transition: transform 160ms ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.panelOpen {
+  transform: translateX(0);
+}
+
+@media (max-width: 600px) {
+  .panel {
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 70vh;
+    border-left: none;
+    border-top: 1px solid var(--grey);
+    transform: translateY(100%);
+  }
+  .panelOpen {
+    transform: translateY(0);
+  }
+}
+
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panelTitle {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.panelClose {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 120ms ease-out;
+}
+
+.panelClose:hover,
+.panelClose:focus-visible {
+  color: var(--lime);
+  outline: none;
+}
+
+.panelDescription {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.panelBadge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.badgeLive {
+  background: var(--lime);
+  color: var(--black);
+}
+.badgeProgress {
+  background: var(--status-progress);
+  color: var(--black);
+}
+.badgePlanned {
+  background: var(--zinc);
+  color: var(--muted);
+  border: 1px solid var(--grey);
+}
+
+.panelRepo {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--lime);
+  word-break: break-all;
+}
+
+.panelRepo::before {
+  content: '→ ';
+}
+
+/* === Footer =================================================== */
+
+.footer {
+  margin: 60px auto 0;
+  max-width: 1100px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mid);
+  font-style: italic;
+}
+
+.footer::before {
+  content: '*>_ ';
+  color: var(--lime);
+  font-style: normal;
+}
+
+.footer::after {
+  content: ' *';
+  color: var(--lime);
+  font-style: normal;
+}
+
+/* === Reduced motion =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .themeToggle,
+  .layerHeader,
+  .card,
+  .panelClose,
+  .overlay,
+  .panel {
+    transition: none;
+  }
+}
