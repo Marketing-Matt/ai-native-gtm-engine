@@ -9,7 +9,7 @@
 
 ```
 last_updated:     2026-05-07
-last_commit:      log ENH-001 (OG image visual polish) — moving on, ISS-001 ready to close on merge
+last_commit:      update CONTEXT.md — correct backlog sequence, #3 is next not #5
 build_phase:      v0.4
 site_status:      live at gtmstack.ai (Next.js 15 + Vercel)
 newsletter:       active via newsletter.gtmstack.ai (Beehiiv)
@@ -104,18 +104,15 @@ Logo mark:        >_
 
 Work through these in order. Do not skip ahead.
 
-|# |Job                                                                              |Dependency                |Status|
-|--|---------------------------------------------------------------------------------|--------------------------|------|
-|1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                      |✅ Done|
-|2 |Build meta-skill: content/write-build-log.md                                     |CLAUDE.md fixed           |✅ Done|
-|3 |Build meta-skill: content/extract-linkedin-posts.md                              |write-build-log committed |✅ Done|
-|4 |Build meta-skill: content/write-beehiiv-issue.md                                 |extract-linkedin committed|✅ Done|
-|5 |Build meta-skill: content/publish-skill-to-site.md                               |write-beehiiv committed   |⬜ Open|
-|6 |Resolve GitHub → Vercel publish pipeline (GitHub Action or document manual steps)|publish-skill skill built |⬜ Open|
-|7 |Build Skill 001 — Audience Segmentation                                          |Pipeline resolved         |⬜ Open|
-|8 |Publish Beehiiv newsletter Issue 001                                             |Skill 001 built           |⬜ Open|
-|9 |Connect ElevenLabs to skill cards                                                |2–3 skills live           |⬜ Open|
-|10|Publish “First 5 Skills” lead magnet                                             |5 skills committed        |⬜ Open|
+|# |Job                                                                              |Dependency                   |Status|
+|--|---------------------------------------------------------------------------------|-----------------------------|------|
+|1 |Fix CLAUDE.md repo structure reference + verify .gitignore covers commercial/    |None                         |✅ Done|
+|2 |Build P1 meta-skill suite (CON-001 → CON-004)                                    |CLAUDE.md fixed              |🔄 In progress (3 of 4 — CON-004 still open)|
+|3 |Resolve GitHub → Vercel publish pipeline (GitHub Action or document manual steps)|P1 meta-skill suite committed|⬜ Open|
+|4 |Build Skill 001 — Audience Segmentation                                          |Pipeline resolved            |⬜ Open|
+|5 |Publish Beehiiv newsletter Issue 001                                             |Skill 001 built              |⬜ Open|
+|6 |Connect ElevenLabs to skill cards                                                |2–3 skills live              |⬜ Open|
+|7 |Publish “First 5 Skills” lead magnet                                             |5 skills committed           |⬜ Open|
 
 -----
 
@@ -203,8 +200,7 @@ See `skills/manifest.json` for full index.
 ## Next actions for Claude Code
 
 - ISS-001 final step: verify preview deploy of `claude/planning-session-commit-VDGen` renders correctly (terminal copy, /robots.txt, /sitemap.xml, /opengraph-image, view-source for JSON-LD + canonical), then merge branch to `main`. Once production deploy lands, mark ISS-001 ✅ Resolved
-- Verify the branch preview deploy renders correctly in Vercel before merging to main
-- Begin Backlog #5: `content/publish-skill-to-site.md` (CON-004 — dependency #4 ✅ met). This is the final P1 meta-skill before Resolve Pipeline (#6) and Skill 001 (#7) unblock.
+- Complete Backlog #2 by building CON-004 (`content/publish-skill-to-site.md`) — last of the P1 meta-skill suite. Once committed, #2 flips to ✅ Done and Backlog #3 (Resolve pipeline) unlocks.
 - After first end-to-end run of `write-build-log.md` on Build Log 001: add `⚡ Ready to sync to Claude Settings — content/write-build-log.md`
 - After first end-to-end run of `extract-linkedin-posts.md`: add `⚡ Ready to sync to Claude Settings — content/extract-linkedin-posts.md`
 - After first end-to-end run of `write-beehiiv-issue.md` (Issue 001): add `⚡ Ready to sync to Claude Settings — content/write-beehiiv-issue.md`
