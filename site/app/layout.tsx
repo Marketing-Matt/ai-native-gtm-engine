@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
@@ -48,7 +49,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${plexMono.variable} ${inter.variable}`}>
-      import { Analytics } from '@vercel/analytics/react'
       <Analytics />
       <body>{children}</body>
     </html>
