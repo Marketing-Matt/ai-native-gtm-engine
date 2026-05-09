@@ -109,6 +109,7 @@ When in doubt, the token file ([`brand/tokens.json`](./brand/tokens.json)) wins.
 ## Known stale items / open work
 
 - `engine/architecture/gtmstack-system-map-v0.4.png` — labels the website tile "Framer". The notes file is current; the PNG needs regeneration to v0.5. Brief: [`engine/architecture/v0.5-regen-brief.md`](./engine/architecture/v0.5-regen-brief.md). Tracked as ADR-009.
+- **Claude Design system — `README.md` (in the design-system project, not this repo)** — line 22 still says *"the site itself ships on Framer."* Needs to read *"Next.js + Vercel"* to match reality. Fix at source in Claude Design (it re-derives from `brand/style-guide.md` + the repo on regen). External file, not committable here. Until fixed: any HTML/mock generated from the design system inherits the stale fact.
 - The Vercel project is named `gtmstack`. Custom domain: `gtmstack.ai` (apex) + `www.gtmstack.ai` (308 redirect to apex).
 
 ---
