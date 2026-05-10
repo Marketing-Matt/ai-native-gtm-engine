@@ -225,7 +225,7 @@ export const layers: WorkflowLayer[] = [
         id: 'elevenlabs',
         title: 'ElevenLabs',
         sub: 'audio content',
-        status: 'planned',
+        status: 'live',
       },
       {
         id: 'gtmstack',
