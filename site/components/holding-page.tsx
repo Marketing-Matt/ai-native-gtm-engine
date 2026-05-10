@@ -422,12 +422,21 @@ export default function HoldingPage() {
                 eight layers, three personas, one trigger word. Listen to the
                 build summary and explore the diagram.
               </p>
-              <PreviewAudio
-                src="/audio/session-001-build-summary.mp3"
-                label=">_ build log #001 / audio summary"
-                title="Listen — how the session system was built, in 2 minutes"
-                note="narration: matt browning · synthesised via elevenlabs"
-              />
+              <div
+                style={{
+                  paddingTop: 20,
+                  paddingBottom: 20,
+                  paddingLeft: isMobile ? 0 : 16,
+                  paddingRight: isMobile ? 0 : 16,
+                }}
+              >
+                <PreviewAudio
+                  src="/audio/session-001-build-summary.mp3"
+                  label=">_ build log #001 / audio summary"
+                  title="Listen — how the session system was built, in 2 minutes"
+                  note="narration: matt browning · synthesised via elevenlabs"
+                />
+              </div>
               <a
                 href="/preview/workflow-map"
                 style={{
