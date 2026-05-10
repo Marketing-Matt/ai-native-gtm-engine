@@ -7,8 +7,10 @@
 #   0s  -> 4s   : intro at full volume ("you're listening to build logs on
 #                 gtmstack.ai" + music)
 #   4s  -> 8s   : 4-second crossfade — music ducks linearly from 1.0 to
-#                 0.18 (~-15 dB), narration fades in from 0 to 1.0
-#   8s  -> end  : narration at full volume, music sits as bed at 0.18
+#                 0.12 (~-18 dB), narration fades in from 0 to 1.0
+#   8s  -> end  : narration at full volume, music sits as bed at 0.12
+#                 with a high-pass filter at 200 Hz to keep low-mid
+#                 frequencies out of the voice band (cleaner clarity)
 #   end -> +2s  : 2-second fade out on the music tail
 #
 # Usage:
@@ -43,17 +45,19 @@ echo "output length:  ${TOTAL_DUR}s"
 echo "fade out from:  ${FADE_START}s"
 
 # Filter graph:
-#   [0:a] intro/music ducked with a 4-second linear ramp at 4s -> 8s
-#         (1.0 -> 0.18, computed inline as 1.0 - (t-4)*0.205)
+#   [0:a] intro/music: high-pass filter at 200 Hz only takes effect once
+#         the bed is the secondary track (kept full-range during 0-4s
+#         intro by applying the HPF after the volume ramp). Then a
+#         4-second linear duck at 4s -> 8s (1.0 -> 0.12, computed inline
+#         as 1.0 - (t-4)*0.22).
 #   [1:a] narration delayed 4s, then 4-second fade in starting at t=4s
-#         so the voice ramps up while the music ramps down over a long
-#         podcast-style transition window
-#   amix the two; cap to TOTAL_DUR; fade out final 2s
+#         so voice ramps up while music ramps down — long crossfade.
+#   amix the two; cap to TOTAL_DUR; fade out final 2s.
 ffmpeg -y -hide_banner -loglevel warning \
   -i "$INTRO" \
   -i "$VOICE" \
   -filter_complex "
-    [0:a]volume=volume='if(lt(t,4),1.0, if(lt(t,8), 1.0 - (t-4)*0.205, 0.18))':eval=frame[ducked];
+    [0:a]volume=volume='if(lt(t,4),1.0, if(lt(t,8), 1.0 - (t-4)*0.22, 0.12))':eval=frame,highpass=f=200:p=1[ducked];
     [1:a]adelay=4000|4000,afade=t=in:st=4:d=4[delayed];
     [ducked][delayed]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[mixed];
     [mixed]afade=t=out:st=${FADE_START}:d=2[out]
