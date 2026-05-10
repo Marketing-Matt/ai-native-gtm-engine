@@ -415,7 +415,6 @@ export default function HoldingPage() {
                   color: "var(--muted)",
                   fontSize: 14,
                   lineHeight: 1.6,
-                  maxWidth: 620,
                 }}
               >
                 Six hours of building gtmstack.ai&rsquo;s session system,

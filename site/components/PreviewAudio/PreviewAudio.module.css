@@ -23,10 +23,10 @@
 
   background: var(--ink);
   border: 1px solid var(--grey);
-  padding: 16px 20px;
+  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   font-family: var(--sans);
   color: var(--white);
   position: relative;
