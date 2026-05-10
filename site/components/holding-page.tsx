@@ -424,10 +424,10 @@ export default function HoldingPage() {
               </p>
               <div
                 style={{
-                  paddingTop: 20,
-                  paddingBottom: 20,
-                  paddingLeft: isMobile ? 0 : 16,
-                  paddingRight: isMobile ? 0 : 16,
+                  marginTop: 32,
+                  marginBottom: 32,
+                  paddingLeft: isMobile ? 0 : 48,
+                  paddingRight: isMobile ? 0 : 48,
                 }}
               >
                 <PreviewAudio

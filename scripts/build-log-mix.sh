@@ -3,12 +3,12 @@
 #
 # Mix the gtmstack.ai "build logs" intro/music bed with a voice narration.
 #
-# Layout:
+# Layout (podcast-style transition):
 #   0s  -> 4s   : intro at full volume ("you're listening to build logs on
 #                 gtmstack.ai" + music)
-#   4s  -> 5s   : 1-second crossfade — music ducks linearly from 1.0 to
+#   4s  -> 8s   : 4-second crossfade — music ducks linearly from 1.0 to
 #                 0.18 (~-15 dB), narration fades in from 0 to 1.0
-#   5s  -> end  : narration at full volume, music sits as bed at 0.18
+#   8s  -> end  : narration at full volume, music sits as bed at 0.18
 #   end -> +2s  : 2-second fade out on the music tail
 #
 # Usage:
@@ -43,17 +43,18 @@ echo "output length:  ${TOTAL_DUR}s"
 echo "fade out from:  ${FADE_START}s"
 
 # Filter graph:
-#   [0:a] intro/music ducked with a 1-second linear ramp at 4s -> 5s
-#         (1.0 -> 0.18, computed inline as 1.0 - (t-4)*0.82)
-#   [1:a] narration delayed 4s, then 1-second fade in starting at t=4s
-#         so the voice ramps up while the music ramps down — true crossfade
+#   [0:a] intro/music ducked with a 4-second linear ramp at 4s -> 8s
+#         (1.0 -> 0.18, computed inline as 1.0 - (t-4)*0.205)
+#   [1:a] narration delayed 4s, then 4-second fade in starting at t=4s
+#         so the voice ramps up while the music ramps down over a long
+#         podcast-style transition window
 #   amix the two; cap to TOTAL_DUR; fade out final 2s
 ffmpeg -y -hide_banner -loglevel warning \
   -i "$INTRO" \
   -i "$VOICE" \
   -filter_complex "
-    [0:a]volume=volume='if(lt(t,4),1.0, if(lt(t,5), 1.0 - (t-4)*0.82, 0.18))':eval=frame[ducked];
-    [1:a]adelay=4000|4000,afade=t=in:st=4:d=1[delayed];
+    [0:a]volume=volume='if(lt(t,4),1.0, if(lt(t,8), 1.0 - (t-4)*0.205, 0.18))':eval=frame[ducked];
+    [1:a]adelay=4000|4000,afade=t=in:st=4:d=4[delayed];
     [ducked][delayed]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[mixed];
     [mixed]afade=t=out:st=${FADE_START}:d=2[out]
   " \
