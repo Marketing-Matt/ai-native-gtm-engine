@@ -10,6 +10,7 @@ import type {
 } from './WorkflowMap.types';
 import { LayerRow } from './nodes/LayerRow';
 import type { FocusedNode } from './nodes/DetailPanel';
+import { PreviewAudio } from '../PreviewAudio';
 
 const DetailPanel = dynamic(
   () => import('./nodes/DetailPanel').then((mod) => mod.DetailPanel),
@@ -127,7 +128,13 @@ export function WorkflowMap({ className }: WorkflowMapProps) {
 
   return (
     <div className={rootClass}>
-      <header className={styles.topbar}>
+      <PreviewAudio
+        src="/audio/session-001-build-summary.mp3"
+        label=">_ build log #001 / audio summary"
+        title="Listen — how the session system was built, in 2 minutes"
+        note="narration: matt browning · synthesised via elevenlabs"
+      />
+      <header className={styles.topbar} style={{ marginTop: 32 }}>
         <div className={styles.topbarLeft}>
           <span className={styles.tLabel}>
             &gt;_ gtmstack.ai / system map / v0.2

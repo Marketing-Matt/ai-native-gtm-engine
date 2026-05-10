@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
+import { PreviewAudio } from "./PreviewAudio";
 
 type StepId = "t1" | "t2" | "t3" | "t4" | "t5";
 type LineId = "l2" | "l3" | "l4" | "l5";
@@ -364,6 +365,96 @@ export default function HoldingPage() {
                 data-beehiiv-form="944ac19b-c53a-4ab7-af70-fb3f8fab7ffe"
                 style={{ width: "100%", minHeight: "60px" }}
               />
+            </div>
+          </section>
+
+          {/* BUILD LOG #001 — PRE-LAUNCH PREVIEW */}
+          <section style={{ borderTop: "1px solid var(--grey)" }}>
+            <div
+              className="build-log-preview"
+              style={{
+                padding: isMobile ? "48px 24px" : "80px 48px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 24,
+                maxWidth: 860,
+                margin: "0 auto",
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: 10,
+                  color: "var(--lime)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                  fontWeight: 500,
+                  lineHeight: 1,
+                }}
+              >
+                &gt;_ build log #001 — live preview
+              </div>
+              <h2
+                style={{
+                  margin: 0,
+                  fontFamily: "var(--mono)",
+                  fontWeight: 700,
+                  fontSize: isMobile ? 28 : 36,
+                  letterSpacing: "-0.5px",
+                  lineHeight: 1.1,
+                  color: "var(--white)",
+                }}
+              >
+                <span style={{ color: "var(--lime)" }}>#</span> The system that
+                built itself
+              </h2>
+              <p
+                style={{
+                  margin: 0,
+                  color: "var(--muted)",
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  maxWidth: 620,
+                }}
+              >
+                Six hours of building gtmstack.ai&rsquo;s session system,
+                captured live. Two skills, an interactive workflow diagram,
+                eight layers, three personas, one trigger word. Listen to the
+                build summary and explore the diagram.
+              </p>
+              <PreviewAudio
+                src="/audio/session-001-build-summary.mp3"
+                label=">_ build log #001 / audio summary"
+                title="Listen — how the session system was built, in 2 minutes"
+                note="narration: matt browning · synthesised via elevenlabs"
+              />
+              <a
+                href="/preview/workflow-map"
+                style={{
+                  display: "inline-block",
+                  alignSelf: "flex-start",
+                  fontFamily: "var(--mono)",
+                  fontSize: 13,
+                  color: "var(--white)",
+                  border: "1px solid var(--grey)",
+                  padding: "10px 16px 9px",
+                  borderRadius: 4,
+                  textDecoration: "none",
+                  letterSpacing: "0.06em",
+                  transition: "border-color 140ms ease-out, color 140ms ease-out",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--lime)";
+                  e.currentTarget.style.color = "var(--lime)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--grey)";
+                  e.currentTarget.style.color = "var(--white)";
+                }}
+              >
+                [ view the interactive workflow diagram &rarr; ]
+              </a>
             </div>
           </section>
 

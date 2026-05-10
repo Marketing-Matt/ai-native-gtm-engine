@@ -1,0 +1,193 @@
+/*
+ * PreviewAudio — terminal-styled audio player.
+ * Token-native: hex stays here, CSS custom props flow up from .root.
+ */
+
+.root {
+  --black: #0a0a0a;
+  --ink: #141414;
+  --zinc: #1e1e1e;
+  --grey: #333333;
+  --mid: #6e6e6e;
+  --muted: #9a9a9a;
+  --white: #f5f5f5;
+  --lime: #a6ff00;
+  --lime-dk: #2d4a00;
+
+  --t-xs: 8px;
+  --t-sm: 10px;
+  --t-base: 13px;
+
+  --mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  background: var(--ink);
+  border: 1px solid var(--grey);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--sans);
+  color: var(--white);
+  position: relative;
+}
+
+:global(html[data-theme='light']) .root {
+  --black: #f5f5f0;
+  --ink: #ebebeb;
+  --zinc: #ffffff;
+  --grey: #d0d0d0;
+  --mid: #888888;
+  --muted: #6e6e6e;
+  --white: #0a0a0a;
+  --lime: #2d4a00;
+  --lime-dk: #a6ff00;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: var(--t-sm);
+  color: var(--lime);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--mono);
+  font-size: var(--t-base);
+  color: var(--white);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.titleAccent {
+  color: var(--lime);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.button {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--grey);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: var(--t-base);
+  letter-spacing: 0.06em;
+  padding: 8px 14px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 140ms ease-out, color 140ms ease-out,
+    background 140ms ease-out;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.button:hover,
+.button:focus-visible {
+  border-color: var(--lime);
+  color: var(--lime);
+  outline: none;
+}
+
+.buttonPlaying {
+  background: var(--lime);
+  color: var(--black);
+  border-color: var(--lime);
+}
+
+.buttonPlaying:hover,
+.buttonPlaying:focus-visible {
+  background: var(--lime-dk);
+  color: var(--black);
+}
+
+.scrubber {
+  flex: 1;
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.scrubberTrack {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: var(--grey);
+}
+
+.scrubberFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--lime);
+  transition: width 80ms linear;
+}
+
+.scrubberRange {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.scrubberRange:focus-visible + .scrubberTrack {
+  outline: 1px solid var(--lime);
+  outline-offset: 4px;
+}
+
+.time {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  color: var(--mid);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 64px;
+  text-align: right;
+}
+
+.note {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--mid);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-wrap: wrap;
+  }
+  .scrubber {
+    order: 3;
+    flex-basis: 100%;
+  }
+  .time {
+    min-width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .scrubberFill {
+    transition: none;
+  }
+}
