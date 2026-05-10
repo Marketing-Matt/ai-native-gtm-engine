@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { WorkflowMap } from '@/components/WorkflowMap';
+import { SiteNav } from '@/components/SiteNav';
 
 export const metadata: Metadata = {
   title: 'WorkflowMap preview — gtmstack.ai',
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function WorkflowMapPreviewPage() {
-  return <WorkflowMap />;
+  return (
+    <>
+      <SiteNav />
+      <WorkflowMap />
+    </>
+  );
 }

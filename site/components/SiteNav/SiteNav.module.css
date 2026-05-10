@@ -1,0 +1,162 @@
+/*
+ * SiteNav — top navigation for non-holding pages.
+ * Mirrors the holding-page nav visual but written as a CSS Module.
+ *
+ * Specificity note: rules anchored under .root because some host pages
+ * may live inside a global reset (e.g. holding-page's .gtm-root *).
+ */
+
+.root.root {
+  --black: #0a0a0a;
+  --ink: #141414;
+  --grey: #333333;
+  --mid: #6e6e6e;
+  --muted: #9a9a9a;
+  --white: #f5f5f5;
+  --lime: #a6ff00;
+
+  --mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 48px;
+  background: var(--black);
+  border-bottom: 1px solid var(--grey);
+  font-family: var(--mono);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.root .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.root .mark {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lime);
+  letter-spacing: 1px;
+  font-family: var(--mono);
+  line-height: 1;
+}
+
+.root .cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.root .pipe {
+  width: 1px;
+  height: 20px;
+  background: var(--grey);
+}
+
+.root .wordmark {
+  font-family: var(--mono);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1;
+}
+
+.root .wordmarkG {
+  color: var(--white);
+}
+
+.root .wordmarkS {
+  color: var(--lime);
+}
+
+.root .wordmarkT {
+  color: var(--mid);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.root .status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.root .statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+.root .github {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid var(--grey);
+  letter-spacing: 0.05em;
+  transition: border-color 140ms ease-out, color 140ms ease-out;
+  white-space: nowrap;
+}
+
+.root .github:hover,
+.root .github:focus-visible {
+  border-color: var(--lime);
+  color: var(--lime);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .root.root {
+    padding: 16px 20px;
+  }
+  .root .status {
+    display: none;
+  }
+  .root .github {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root .cursor,
+  .root .statusDot,
+  .root .github {
+    animation: none;
+    transition: none;
+  }
+}
