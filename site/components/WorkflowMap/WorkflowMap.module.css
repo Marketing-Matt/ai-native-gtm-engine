@@ -148,10 +148,9 @@
 }
 
 .intro {
-  margin: 0;
+  margin: 0 0 28px;
   color: var(--muted);
   font-size: var(--t-base);
-  max-width: 540px;
 }
 
 .introCode {

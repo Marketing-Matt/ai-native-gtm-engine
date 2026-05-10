@@ -143,16 +143,6 @@ export function WorkflowMap({ className }: WorkflowMapProps) {
             <span className={styles.headingPrefix}>#</span> session pipeline
             <span className={styles.cursor} aria-hidden />
           </h1>
-          <p className={styles.intro}>
-            How a stack session actually runs. The voice trigger fires{' '}
-            <code className={styles.introCode}>session-starter</code>, which
-            silently fetches gtmstack.ai + 6 repo sources, cross-references your
-            Google Calendar 1-2-1s, replays open actions and parked items,
-            surfaces ADR conflicts and 7-day gaps, then categorises every input
-            by persona — Marketing / Technical / Business — by priority and by
-            repo impact. Output is a session log, generated diagrams, and an
-            email of the decisions.
-          </p>
         </div>
         <div className={styles.topbarRight}>
           <FilterChips
@@ -171,6 +161,17 @@ export function WorkflowMap({ className }: WorkflowMapProps) {
           </button>
         </div>
       </header>
+
+      <p className={styles.intro}>
+        How a stack session actually runs. The voice trigger fires{' '}
+        <code className={styles.introCode}>session-starter</code>, which
+        silently fetches gtmstack.ai + 6 repo sources, cross-references your
+        Google Calendar 1-2-1s, replays open actions and parked items,
+        surfaces ADR conflicts and 7-day gaps, then categorises every input
+        by persona — Marketing / Technical / Business — by priority and by
+        repo impact. Output is a session log, generated diagrams, and an email
+        of the decisions.
+      </p>
 
       <div className={styles.meta}>
         <span>
