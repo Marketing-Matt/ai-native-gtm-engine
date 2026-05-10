@@ -1,9 +1,15 @@
 /*
  * PreviewAudio — terminal-styled audio player.
  * Token-native: hex stays here, CSS custom props flow up from .root.
+ *
+ * Specificity note: every rule is anchored to .root (or .root.root for
+ * the host element itself) so we win against the holding page's
+ * `.gtm-root *` global reset, which would otherwise wipe out our
+ * padding/margin. CSS Modules generates two-class compound selectors
+ * here, giving (0,2,0,0) specificity vs the reset's (0,1,0,0).
  */
 
-.root {
+.root.root {
   --black: #0a0a0a;
   --ink: #141414;
   --zinc: #1e1e1e;
@@ -44,7 +50,7 @@
   --lime-dk: #a6ff00;
 }
 
-.label {
+.root .label {
   font-family: var(--mono);
   font-size: var(--t-sm);
   color: var(--lime);
@@ -54,7 +60,7 @@
   line-height: 1;
 }
 
-.title {
+.root .title {
   font-family: var(--mono);
   font-size: var(--t-base);
   color: var(--white);
@@ -63,18 +69,18 @@
   line-height: 1.4;
 }
 
-.titleAccent {
+.root .titleAccent {
   color: var(--lime);
 }
 
-.row {
+.root .row {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: nowrap;
 }
 
-.button {
+.root .button {
   appearance: none;
   background: transparent;
   border: 1px solid var(--grey);
@@ -92,26 +98,26 @@
   flex-shrink: 0;
 }
 
-.button:hover,
-.button:focus-visible {
+.root .button:hover,
+.root .button:focus-visible {
   border-color: var(--lime);
   color: var(--lime);
   outline: none;
 }
 
-.buttonPlaying {
+.root .buttonPlaying {
   background: var(--lime);
   color: var(--black);
   border-color: var(--lime);
 }
 
-.buttonPlaying:hover,
-.buttonPlaying:focus-visible {
+.root .buttonPlaying:hover,
+.root .buttonPlaying:focus-visible {
   background: var(--lime-dk);
   color: var(--black);
 }
 
-.scrubber {
+.root .scrubber {
   flex: 1;
   position: relative;
   height: 28px;
@@ -121,14 +127,14 @@
   min-width: 0;
 }
 
-.scrubberTrack {
+.root .scrubberTrack {
   position: relative;
   width: 100%;
   height: 1px;
   background: var(--grey);
 }
 
-.scrubberFill {
+.root .scrubberFill {
   position: absolute;
   top: 0;
   left: 0;
@@ -137,7 +143,7 @@
   transition: width 80ms linear;
 }
 
-.scrubberRange {
+.root .scrubberRange {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -147,12 +153,12 @@
   margin: 0;
 }
 
-.scrubberRange:focus-visible + .scrubberTrack {
+.root .scrubberRange:focus-visible + .scrubberTrack {
   outline: 1px solid var(--lime);
   outline-offset: 4px;
 }
 
-.time {
+.root .time {
   font-family: var(--mono);
   font-size: var(--t-xs);
   letter-spacing: 0.12em;
@@ -163,7 +169,7 @@
   text-align: right;
 }
 
-.note {
+.root .note {
   font-family: var(--mono);
   font-size: var(--t-xs);
   color: var(--mid);
@@ -173,21 +179,21 @@
 }
 
 @media (max-width: 600px) {
-  .row {
+  .root .row {
     flex-wrap: wrap;
   }
-  .scrubber {
+  .root .scrubber {
     order: 3;
     flex-basis: 100%;
   }
-  .time {
+  .root .time {
     min-width: auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button,
-  .scrubberFill {
+  .root .button,
+  .root .scrubberFill {
     transition: none;
   }
 }
